@@ -23,6 +23,83 @@
         <link rel="stylesheet" href="assets/css/twentytwenty.min.css">
         <link rel="stylesheet" href="assets/css/swiper.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
+        <style>
+              .gallery-section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 300;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #333;
+      margin-bottom: 40px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, 240px);
+      gap: 12px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      display: block;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+
+    .gallery-item .overlay span {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 991px) {
+      .gallery-item:hover img { transform: none; }
+    }
+
+    @media (max-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 200px);
+      }
+      .gallery-title { font-size: 24px; }
+    }
+        </style>
     </head>
 
     <body>
@@ -264,82 +341,43 @@
     <div id="antra-smooth-wrapper">
         <div id="antra-smooth-content">
 
-        <section class="slider-section overflow-hidden">
-            <div class="antra-slider swiper-container">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="slider-item">
-                            <!-- Use Luxarius hero image as background -->
-                            <div class="bg-img" data-background="https://luxarius.ma/wp-content/uploads/2023/03/luxarius.png"></div>
-                            <div class="container slider-container">
-                                <div class="slider-content-wrap">
-                                    <div class="slider-content">
-                                        <div class="section-heading white-content">
-                                            <h4 class="sub-heading" data-animation="antra-fadeInDown" data-delay="1000ms" data-duration="1400ms">MARQUE AMÉRICAINE DEPUIS 2008</h4>
-                                            <h2 class="section-title cursor-effect" data-animation="antra-fadeInDown" data-delay="1200ms" data-duration="1400ms">Un fauteuil massant adapté à votre <br> établissement.</h2>
-                                        </div>
-                                        <div class="bottom-content">
-                                            <div class="antra-desc" data-animation="antra-fadeInUp" data-delay="1000ms" data-duration="1400ms">
-                                                <p>Peu importe votre secteur d'activité,<br>Luxarius propose la technologie de massage<br>la plus avancée pour votre bien-être quotidien.</p>
-                                            </div>
-                                            <div class="antra-btn"  data-animation="antra-fadeInUp" data-delay="1200ms" data-duration="1400ms">
-                                                <a href="https://luxarius.ma/demande-essai/" target="_blank" class="tl-primary-btn white-btn">Demander un essai <span class="icon"><i class="fa-regular fa-arrow-right"></i></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slider-element-wrap" data-animation="antra-fadeInRight" data-delay="1300ms" data-duration="1300ms">
-                                <div class="slider-element">
-                                    <h4 class="title">15+</h4>
-                                    <span>Ans d'expérience</span>
-                                    <p>Marque américaine de fauteuils <br> massants professionnels.</p>
-                                </div>
-                                <div class="slider-thumb">
-                                    <!-- Replace Antra thumb with Luxarius product image -->
-                                    <img src="https://luxarius.ma/wp-content/uploads/2024/11/4.png" alt="Fauteuil Luxarius KING">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="slider-item">
-                            <!-- Second slide also uses Luxarius imagery -->
-                            <div class="bg-img" data-background="https://luxarius.ma/wp-content/uploads/2024/05/1.jpg"></div>
-                            <div class="container slider-container">
-                                <div class="slider-content-wrap">
-                                    <div class="slider-content">
-                                        <div class="section-heading white-content">
-                                            <h4 class="sub-heading" data-animation="antra-fadeInDown" data-delay="1000ms" data-duration="1400ms">BIEN-ÊTRE AU QUOTIDIEN</h4>
-                                            <h2 class="section-title cursor-effect" data-animation="antra-fadeInDown" data-delay="1200ms" data-duration="1400ms">La technologie de massage <br> la plus avancée.</h2>
-                                        </div>
-                                        <div class="bottom-content">
-                                            <div class="antra-desc" data-animation="antra-fadeInUp" data-delay="1000ms" data-duration="1400ms">
-                                                <p>Offrez à vos clients ou à votre famille<br>une expérience de massage exceptionnelle<br>grâce aux fauteuils Luxarius.</p>
-                                            </div>
-                                            <div class="antra-btn"  data-animation="antra-fadeInUp" data-delay="1200ms" data-duration="1400ms">
-                                                <a href="https://luxarius.ma/devis/" target="_blank" class="tl-primary-btn white-btn">Obtenir un devis <span class="icon"><i class="fa-regular fa-arrow-right"></i></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slider-element-wrap" data-animation="antra-fadeInRight" data-delay="1300ms" data-duration="1300ms">
-                                <div class="slider-element">
-                                    <h4 class="title">500+</h4>
-                                    <span>Clients satisfaits</span>
-                                    <p>Particuliers & professionnels <br> au Maroc et à l’international.</p>
-                                </div>
-                                <div class="slider-thumb">
-                                    <img src="https://luxarius.ma/wp-content/uploads/2023/03/full-body-sofa-led-massage-chair-with-in_main-3.jpg" alt="Fauteuil Luxarius LUXOR">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <section class="overflow-hidden" style="
+            background: 
+              linear-gradient(135deg, rgba(5,5,5,0.72) 0%, rgba(10,8,4,0.55) 50%, rgba(15,10,2,0.38) 100%),
+              linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, rgba(20,14,2,0.7) 100%),
+              url('assets/img/images/8ce843dc-71ac-4577-81dc-17603061a2a2.png');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 90px;
+            position: relative;
+          ">
+            <!-- Amber glow at the bottom, like the image -->
+            <div style="
+              position: absolute;
+              bottom: 0; left: 0; right: 0;
+              height: 180px;
+              background: radial-gradient(ellipse at 60% 100%, rgba(180,110,10,0.32) 0%, rgba(120,70,5,0.12) 50%, transparent 80%);
+              pointer-events: none;
+            "></div>
+          
+            <div class="container" style="position: relative; z-index: 1;">
+              <div class="row align-items-center g-4">
+                <div class="col-lg-7">
+                  <h4 style="color:#caa05c; letter-spacing:.08em; margin-bottom:14px;">BIEN-ETRE AU QUOTIDIEN</h4>
+                  <h2 style="color:#fff; font-size:58px; line-height:1.05; margin-bottom:18px;">La technologie de massage<br>la plus avancee.</h2>
+                  <p style="color:#fff; max-width:620px; margin-bottom:24px;">
+                    Offrez a vos clients ou a votre famille<br>
+                    une experience de massage exceptionnelle<br>
+                    grace aux fauteuils Luxarius.
+                  </p>
+                  <a href="https://luxarius.ma/devis/" target="_blank" class="tl-primary-btn white-btn">
+                    Obtenir un devis <span class="icon"><i class="fa-regular fa-arrow-right"></i></span>
+                  </a>
                 </div>
+              </div>
             </div>
-        </section>
-        <!-- ./ slider-section -->
+          </section>
+        <!-- ./ static hero-section -->
                 
         <section class="service-section pt-150 pb-110 overflow-hidden tl-bg-color fade-wrapper">
             <div class="bg-shape" data-background="assets/img/shapes/service-bg-shape-1.png"></div>
@@ -408,136 +446,73 @@
         </section>
         <!-- ./ service-section -->
 
-        <section class="about-section overflow-hidden">
-            <div class="about-bg" data-background="assets/img/bg-img/about-bg.png"></div>
-            <div class="about-text"><span>antra</span></div>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="about-content white-content slide-anim" data-delay="0.3" data-offset="100" data-direction="left">
-                            <div class="section-heading white-content mb-30">
-                                <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">Depuis 2008</h4>
-                                <h2 class="section-title cursor-effect">Luxarius, <br> <span>fauteuils massants</span> haut de gamme</h2>
-                            </div>
-                            <ul class="about-list">
-                                <li><img src="assets/img/icon/about-1.png" alt="about">Technologie de massage avancée</li>
-                                <li><img src="assets/img/icon/about-1.png" alt="about">Garantie 2 ans, pièces & main d’œuvre</li>
-                                <li><img src="assets/img/icon/about-1.png" alt="about">Suivi des pièces détachées 10 ans</li>
-                                <li><img src="assets/img/icon/about-1.png" alt="about">Installation sans travaux préalables</li>
-                            </ul>
-                            <p>Luxarius est une marque américaine spécialisée dans la conception et la fabrication de fauteuils de massage professionnels pour le bien-être au quotidien.</p>
-                            <div class="about-btn">
-                                <a href="about.html" class="tl-primary-btn white-btn">More About Us <span class="icon"><i class="fa-regular fa-arrow-right"></i></span></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="about-img slide-anim" data-delay="0.3" data-offset="100" data-direction="right">
-                            <img src="assets/img/images/about-img-1.png" alt="about">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+       <section class="about-section overflow-hidden" style="
+  background:
+    radial-gradient(ellipse at 70% 100%, rgba(180,110,10,0.28) 0%, rgba(100,60,5,0.10) 45%, transparent 70%),
+    radial-gradient(ellipse at 20% 50%, rgba(15,10,2,0.95) 0%, transparent 70%),
+    linear-gradient(160deg, #080603 0%, #0d0a04 40%, #100d05 70%, #0a0702 100%);
+  position: relative;
+">
+  <!-- Subtle top vignette -->
+  <div style="
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 120px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    pointer-events: none; z-index: 0;
+  "></div>
+
+  <!-- Bottom amber glow -->
+  <div style="
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 200px;
+    background: radial-gradient(ellipse at 65% 100%, rgba(190,120,10,0.30) 0%, rgba(130,75,5,0.12) 45%, transparent 75%);
+    pointer-events: none; z-index: 0;
+  "></div>
+
+  <!-- Remove or keep the about-text watermark -->
+  <div class="about-text" style="
+    position: absolute; right: -40px; top: 50%;
+    transform: translateY(-50%);
+    font-size: 160px; font-weight: 900;
+    color: rgba(255,255,255,0.03);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  "><span>Luxarius</span></div>
+
+  <div class="container" style="position: relative; z-index: 1;">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="about-content white-content slide-anim" data-delay="0.3" data-offset="100" data-direction="left">
+          <div class="section-heading white-content mb-30">
+            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03" style="color:#caa05c; letter-spacing:.08em;">Depuis 2008</h4>
+            <h2 class="section-title cursor-effect" style="color:#fff;">Luxarius, <br>
+              <span style="color:#caa05c;">fauteuils massants</span> haut de gamme
+            </h2>
+          </div>
+          <ul class="about-list">
+            <li><img src="assets/img/icon/about-1.png" alt="about">Technologie de massage avancée</li>
+            <li><img src="assets/img/icon/about-1.png" alt="about">Garantie 2 ans, pièces & main d'œuvre</li>
+            <li><img src="assets/img/icon/about-1.png" alt="about">Suivi des pièces détachées 10 ans</li>
+            <li><img src="assets/img/icon/about-1.png" alt="about">Installation sans travaux préalables</li>
+          </ul>
+          <p style="color:rgba(255,255,255,0.75);">Luxarius est une marque américaine spécialisée dans la conception et la fabrication de fauteuils de massage professionnels pour le bien-être au quotidien.</p>
+          <div class="about-btn">
+            <a href="about.html" class="tl-primary-btn white-btn">More About Us <span class="icon"><i class="fa-regular fa-arrow-right"></i></span></a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
         <!-- ./ about-section -->
 
-        <section class="feature-section pt-150 pb-110 overflow-hidden tl-bg-color fade-wrapper">
-            <div class="container container-2">
-                <div class="row section-heading-wrap fade-top feature-top">  
-                    <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="section-heading mb-0">
-                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">WHO We Are</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                        <div class="section-heading section-heading-2 mb-0">
-                            <h2 class="section-title cursor-effect title-2">Explore our <span>comprehensive <br> interior design</span> services</h2>
-                            <p class="mb-0">We specialize in transforming visions into reality. Explore our portfolio of innovative architectural and interior design projects crafted with precision.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row fade-top">
-                    <div class="col-lg-6">
-                        <div class="feature-item-imgs">
-                            <div class="feature-img">
-                                <img src="assets/img/service/feature-img-1.png" alt="feature">
-                                <div class="img-content">
-                                    <p>Tailored design services for private homes, including room makeovers and complete home transformations.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="feature-item-list feature-item-list-1">
-                            <div class="feature-item" data-img="assets/img/service/feature-img-1.png" data-text="Tailored design services for private homes, including room makeovers and complete home transformations.">
-                                <span class="number">01</span>
-                                <h3 class="title"><a href="service-details.html">Residential Interior Design</a></h3>
-                                <a href="service-details.html" class="arrow"><i class="fa-regular fa-arrow-right"></i></a>
-                            </div>
-                            <div class="feature-item"  data-img="assets/img/service/feature-img-2.png" data-text="Extending design services to outdoor spaces such as gardens, patios, and decks.">
-                                <span class="number">02</span>
-                                <h3 class="title"><a href="service-details.html">Commercial Interior Design</a></h3>
-                                <a href="service-details.html" class="arrow"><i class="fa-regular fa-arrow-right"></i></a>
-                            </div>
-                            <div class="feature-item"  data-img="assets/img/service/feature-img-3.png" data-text="Providing professional advice on concepts, color schemes & material selection.">
-                                <span class="number">03</span>
-                                <h3 class="title"><a href="service-details.html">Interior Design Consultation</a></h3>
-                                <a href="service-details.html" class="arrow"><i class="fa-regular fa-arrow-right"></i></a>
-                            </div>
-                            <div class="feature-item"  data-img="assets/img/service/feature-img-4.png" data-text="Designing functional and attractive interiors for businesses, including offices, retail spaces, and hospitality venues.">
-                                <span class="number">04</span>
-                                <h3 class="title"><a href="service-details.html">Outdoor & Landscape Design</a></h3>
-                                <a href="service-details.html" class="arrow"><i class="fa-regular fa-arrow-right"></i></a>
-                            </div>
-                            <div class="feature-item"  data-img="assets/img/service/feature-img-5.png" data-text="Overhauling existing spaces to modernize and improve functionality and aesthetics.">
-                                <span class="number">05</span>
-                                <h3 class="title"><a href="service-details.html">Renovation and Remodeling</a></h3>
-                                <a href="service-details.html" class="arrow"><i class="fa-regular fa-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+     
         <!-- ./ feature-section -->
 
-        <section class="counter-section counter-1">
-            <div class="counter-text"><span>antra</span></div>
-            <div class="counter-element scroll-area"><img class="scroll-img" src="assets/img/images/counter-img-1.png" alt="counter"></div>
-            <div class="container container-2">
-                <div class="row gy-5 fade-wrapper">
-                    <div class="col-lg-3 col-md-6 fade-top">
-                        <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="15">0</span><span class="icon">+</span></h3>
-                            <h4 class="sub-title">Ans d'expérience</h4>
-                            <p>Luxarius accompagne particuliers et <br> professionnels depuis plus de 15 ans.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 fade-top">
-                        <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="500">0</span><span class="icon">+</span></h3>
-                            <h4 class="sub-title">Clients satisfaits</h4>
-                            <p>Des centaines de foyers et d’entreprises <br> déjà équipés.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 fade-top">
-                        <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="20">0</span><span class="icon">+</span></h3>
-                            <h4 class="sub-title">Points de ventes</h4>
-                            <p>Une présence dans les principaux <br> centres commerciaux du Maroc.</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 fade-top">
-                        <div class="counter-item">
-                            <h3 class="title"><span class="odometer" data-count="98">0</span><span class="icon">+</span></h3>
-                            <h4 class="sub-title">Pays dans le monde</h4>
-                            <p>Une marque présente dans plus de <br> 98 pays.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+     
         <!-- ./ counter-section -->
 
         <section class="process-section overflow-hidden fade-wrapper">
@@ -552,56 +527,119 @@
                         <p class="mb-0">De la demande d’essai à l’installation, nous vous accompagnons à chaque étape pour trouver le fauteuil de massage idéal.</p>
                     </div>
                 </div>
-                <div class="row gy-xl-0 gy-4 process-wrap fade-wrapper">
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="process-item fade-top">
-                            <div class="process-thumb">
-                                <img src="assets/img/images/process-img-1.png" alt="process">
-                            </div>
-                            <div class="process-content">
-                                <h3 class="title"><span>01</span>. Demande d’essai</h3>
-                                <p>Vous nous contactez pour découvrir nos fauteuils <br> et bénéficier d’une démonstration.</p>
-                            </div>
-                            <span class="number">01</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="process-item fade-top">
-                            <div class="process-thumb">
-                                <img src="assets/img/images/process-img-2.png" alt="process">
-                            </div>
-                            <div class="process-content">
-                                <h3 class="title"><span>02</span>. Choix du modèle</h3>
-                                <p>Nous vous conseillons le fauteuil le plus adapté <br> à votre domicile ou votre établissement.</p>
-                            </div>
-                            <span class="number">02</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="process-item fade-top">
-                            <div class="process-thumb">
-                                <img src="assets/img/images/process-img-3.png" alt="process">
-                            </div>
-                            <div class="process-content">
-                                <h3 class="title"><span>03</span>. Livraison & installation</h3>
-                                <p>Nos équipes livrent, installent et mettent <br> en service votre fauteuil Luxarius.</p>
-                            </div>
-                            <span class="number">03</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-md-6">
-                        <div class="process-item fade-top">
-                            <div class="process-thumb">
-                                <img src="assets/img/images/process-img-4.png" alt="process">
-                            </div>
-                            <div class="process-content">
-                                <h3 class="title"><span>04</span>. Suivi & garantie</h3>
-                                <p>Bénéficiez de 2 ans de garantie et d’un <br> suivi pièces détachées pendant 10 ans.</p>
-                            </div>
-                            <span class="number">04</span>
-                        </div>
-                    </div>
-                </div>
+             <div class="row gy-xl-0 gy-4 process-wrap fade-wrapper">
+
+  <!-- 01. Demande d'essai -->
+  <div class="col-xl-3 col-lg-6 col-md-6">
+    <div class="process-item fade-top">
+      <div class="process-thumb">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none">
+          <!-- Phone handset -->
+          <circle cx="40" cy="40" r="38" stroke="#caa05c" stroke-width="1.5" opacity="0.2"/>
+          <path d="M28 24h6l3 8-4 2.5a22 22 0 0 0 10.5 10.5L46 41l8 3v6c0 2-1.8 3.6-3.8 3.2C32.4 50.8 27.2 45.6 24.8 35.8 24.4 33.8 26 32 28 32V24Z" 
+                stroke="#caa05c" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Signal waves -->
+          <path d="M50 24a14 14 0 0 1 0 14" stroke="#caa05c" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <path d="M54 20a20 20 0 0 1 0 22" stroke="#caa05c" stroke-width="2" stroke-linecap="round" opacity="0.25"/>
+        </svg>
+      </div>
+      <div class="process-content">
+        <h3 class="title"><span>01</span>. Demande d'essai</h3>
+        <p>Vous nous contactez pour découvrir nos fauteuils <br> et bénéficier d'une démonstration.</p>
+      </div>
+      <span class="number">01</span>
+    </div>
+  </div>
+
+  <!-- 02. Choix du modèle -->
+  <div class="col-xl-3 col-lg-6 col-md-6">
+    <div class="process-item fade-top">
+      <div class="process-thumb">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none">
+          <circle cx="40" cy="40" r="38" stroke="#caa05c" stroke-width="1.5" opacity="0.2"/>
+          <!-- Massage chair silhouette -->
+          <path d="M26 52 Q26 42 32 38 L34 28 Q35 24 40 24 Q45 24 46 28 L48 38 Q54 42 54 52" 
+                stroke="#caa05c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Seat -->
+          <path d="M28 52 Q40 56 52 52" stroke="#caa05c" stroke-width="2" stroke-linecap="round"/>
+          <!-- Headrest -->
+          <rect x="35" y="20" width="10" height="6" rx="3" stroke="#caa05c" stroke-width="2"/>
+          <!-- Armrests -->
+          <path d="M32 40 L26 42 L26 48" stroke="#caa05c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+          <path d="M48 40 L54 42 L54 48" stroke="#caa05c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>
+          <!-- Checkmark selection -->
+          <circle cx="54" cy="26" r="8" fill="#0d0a04" stroke="#caa05c" stroke-width="1.5"/>
+          <path d="M50 26 l3 3 5-5" stroke="#caa05c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="process-content">
+        <h3 class="title"><span>02</span>. Choix du modèle</h3>
+        <p>Nous vous conseillons le fauteuil le plus adapté <br> à votre domicile ou votre établissement.</p>
+      </div>
+      <span class="number">02</span>
+    </div>
+  </div>
+
+  <!-- 03. Livraison & installation -->
+  <div class="col-xl-3 col-lg-6 col-md-6">
+    <div class="process-item fade-top">
+      <div class="process-thumb">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none">
+          <circle cx="40" cy="40" r="38" stroke="#caa05c" stroke-width="1.5" opacity="0.2"/>
+          <!-- Truck body -->
+          <rect x="18" y="33" width="30" height="18" rx="2" stroke="#caa05c" stroke-width="2"/>
+          <!-- Truck cab -->
+          <path d="M48 39 L48 51 L60 51 L60 43 L55 33 L48 33" 
+                stroke="#caa05c" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Windshield -->
+          <path d="M49 35 L54 35 L57 41 L49 41Z" stroke="#caa05c" stroke-width="1.5" stroke-linejoin="round" opacity="0.5"/>
+          <!-- Wheels -->
+          <circle cx="27" cy="52" r="4" stroke="#caa05c" stroke-width="2"/>
+          <circle cx="27" cy="52" r="1.5" fill="#caa05c" opacity="0.5"/>
+          <circle cx="53" cy="52" r="4" stroke="#caa05c" stroke-width="2"/>
+          <circle cx="53" cy="52" r="1.5" fill="#caa05c" opacity="0.5"/>
+          <!-- Speed lines -->
+          <path d="M18 38 L12 38" stroke="#caa05c" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+          <path d="M18 43 L10 43" stroke="#caa05c" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
+          <path d="M18 48 L14 48" stroke="#caa05c" stroke-width="1.5" stroke-linecap="round" opacity="0.15"/>
+        </svg>
+      </div>
+      <div class="process-content">
+        <h3 class="title"><span>03</span>. Livraison & installation</h3>
+        <p>Nos équipes livrent, installent et mettent <br> en service votre fauteuil Luxarius.</p>
+      </div>
+      <span class="number">03</span>
+    </div>
+  </div>
+
+  <!-- 04. Suivi & garantie -->
+  <div class="col-xl-3 col-lg-6 col-md-6">
+    <div class="process-item fade-top">
+      <div class="process-thumb">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80" fill="none">
+          <circle cx="40" cy="40" r="38" stroke="#caa05c" stroke-width="1.5" opacity="0.2"/>
+          <!-- Shield -->
+          <path d="M40 20 L56 27 L56 42 Q56 52 40 60 Q24 52 24 42 L24 27 Z" 
+                stroke="#caa05c" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Shield fill subtle -->
+          <path d="M40 22 L54 28.5 L54 42 Q54 50.5 40 57.5 Q26 50.5 26 42 L26 28.5 Z" 
+                fill="#caa05c" opacity="0.06"/>
+          <!-- Checkmark inside shield -->
+          <path d="M33 40 l5 5 9-10" stroke="#caa05c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- 10 ans badge -->
+          <circle cx="56" cy="56" r="10" fill="#0d0a04" stroke="#caa05c" stroke-width="1.5"/>
+          <text x="56" y="60" text-anchor="middle" font-size="7" fill="#caa05c" font-family="serif" font-weight="bold">10</text>
+        </svg>
+      </div>
+      <div class="process-content">
+        <h3 class="title"><span>04</span>. Suivi & garantie</h3>
+        <p>Bénéficiez de 2 ans de garantie et d'un <br> suivi pièces détachées pendant 10 ans.</p>
+      </div>
+      <span class="number">04</span>
+    </div>
+  </div>
+
+</div>
                 <div class="process-text">
                     <h5 class="bottom-text">Vous avez un projet de bien-être ? <a href="https://luxarius.ma/devis/" target="_blank">Obtenez votre devis gratuit</a></h5>
                 </div>
@@ -609,108 +647,52 @@
         </section>
         <!-- ./ process-section -->
 
-        <section class="project-section pt-130 tl-bg-color fade-wrapper">
-            <div class="bg-shape" data-background="assets/img/shapes/project-shape-1.png"></div>
-            <div class="project-text"><span>Interior</span></div>
-            <div class="container container-2">
-                <div class="row section-heading-wrap fade-top">  
-                    <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="section-heading mb-0">
-                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">Our Projects</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                        <div class="section-heading section-heading-2 mb-0">
-                            <h2 class="section-title cursor-effect title-2">Creative <span>projects that <br> define</span> our style</h2>
-                            <p class="mb-0">Our portfolio showcases a diverse range of projects, from beautifully crafted <br> residential spaces functional and stylish commercial interiors</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-carousel swiper fade-top">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="project-item">
-                                <div class="project-img">
-                                    <img src="assets/img/project/project-img-1.png" alt="project">
-                                    <ul>
-                                        <li><a href="portfolio-details.html">Residential</a></li>
-                                        <li><a href="portfolio-details.html">Single Home</a></li>
-                                    </ul>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="title"><a href="portfolio-details.html">Luxury Skyline</a></h3>
-                                    <span>Berlin, Germany <br>2025</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="project-item">
-                                <div class="project-img">
-                                    <img src="assets/img/project/project-img-2.png" alt="project">
-                                    <ul>
-                                        <li><a href="portfolio-details.html">Residential</a></li>
-                                        <li><a href="portfolio-details.html">Single Home</a></li>
-                                    </ul>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="title"><a href="portfolio-details.html">Bohemian Rhapsody</a></h3>
-                                    <span>Berlin, Germany <br>2025</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="project-item">
-                                <div class="project-img">
-                                    <img src="assets/img/project/project-img-3.png" alt="project">
-                                    <ul>
-                                        <li><a href="portfolio-details.html">Residential</a></li>
-                                        <li><a href="portfolio-details.html">Single Home</a></li>
-                                    </ul>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="title"><a href="portfolio-details.html">Vintage Glamour</a></h3>
-                                    <span>Berlin, Germany <br>2025</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="project-item">
-                                <div class="project-img">
-                                    <img src="assets/img/project/project-img-4.png" alt="project">
-                                    <ul>
-                                        <li><a href="portfolio-details.html">Residential</a></li>
-                                        <li><a href="portfolio-details.html">Single Home</a></li>
-                                    </ul>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="title"><a href="portfolio-details.html">Titan Office Interior </a></h3>
-                                    <span>Berlin, Germany <br>2025</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="project-item">
-                                <div class="project-img">
-                                    <img src="assets/img/project/project-img-5.png" alt="project">
-                                    <ul>
-                                        <li><a href="portfolio-details.html">Residential</a></li>
-                                        <li><a href="portfolio-details.html">Single Home</a></li>
-                                    </ul>
-                                </div>
-                                <div class="project-content">
-                                    <h3 class="title"><a href="portfolio-details.html">Living Innovation</a></h3>
-                                    <span>Berlin, Germany <br>2025</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="project-house-img">
-                <img src="assets/img/images/project-house.png" alt="img">
-            </div>
-        </section>
+       <section class="gallery-section">
+    <h2 class="gallery-title">Agencement avec nos modèles</h2>
+    <div class="gallery-grid">
+
+      <div class="gallery-item">
+        <img src="./assets/img/images/bureau-prive.jpg" alt="Bureau Privé" loading="lazy" />
+        <div class="overlay"><span>Bureau Privé</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="./assets/img/images/bureau-executif.jpg" alt="Bureau Exécutif" loading="lazy" />
+        <div class="overlay"><span>Bureau Exécutif</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="./assets/img/images/salon-moderne.jpg" alt="Salon Moderne" loading="lazy" />
+        <div class="overlay"><span>Salon Moderne</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="./assets/img/images/aeroport.jpg" alt="Espace Aéroport" loading="lazy" />
+        <div class="overlay"><span>Espace Aéroport</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="./assets/img/images/hambre.jpg" alt="Chambre Cosy" loading="lazy" />
+        <div class="overlay"><span>Chambre Cosy</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="./assets/img/images/clinique.jpg" alt="Clinique & Spa" loading="lazy" />
+        <div class="overlay"><span>Clinique & Spa</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="./assets/img/images/salon-luxe.jpg" alt="Salon Luxe" loading="lazy" />
+        <div class="overlay"><span>Salon Luxe</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="./assets/img/images/appartement.jpg" alt="Appartement Vue Ville" loading="lazy" />
+        <div class="overlay"><span>Appartement Vue Ville</span></div>
+      </div>
+
+    </div>
+  </section>
         <!-- ./ project-section -->
 
         <section class="testimonial-section pt-150 fade-wrapper">
@@ -1197,7 +1179,6 @@
         <script src="assets/js/vendor/panolens.min.js"></script>
         <script src="assets/js/vendor/jquery.event.move.min.js"></script>
         <script src="assets/js/vendor/jquery.twentytwenty.min.js"></script>
-        <script src="assets/js/slider.js"></script>
         <script src="assets/js/banner-process.js"></script>
         <script src="assets/js/contact.js"></script>
         <script src="assets/js/main.js"></script>
