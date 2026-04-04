@@ -635,20 +635,23 @@ animateBars();
         });
 
         // Testi Carousel
-        var swiperTesti = new Swiper(".testi-carousel", {
-            slidesPerView: 1,
-            spaceBetween: 24,
-            slidesPerGroup: 1,
-            loop: true,
-            autoplay: false,
-            grabcursor: true,
-            speed: 800,
-            navigation: {
-                nextEl: '.testi-top-content-wrap .swiper-prev',
-                prevEl: '.testi-top-content-wrap .swiper-next',
-            },
-        });
-
+       // Testi Carousel
+var swiperTesti = new Swiper(".testi-carousel", {
+    slidesPerView: 1,
+    spaceBetween: 24,
+    slidesPerGroup: 1,
+    loop: true,
+    autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+    },
+    grabcursor: true,
+    speed: 800,
+    pagination: {
+        el: '.testi-carousel .swiper-pagination',
+        clickable: true,
+    },
+});
         //Testi Carousel
 
         var swiperTesti = new Swiper(".testi-carousel-3", {
