@@ -7,43 +7,77 @@ START: Footer CSS
     position: relative;
     z-index: 1;
     padding-bottom: 395px;
+    overflow: hidden;
     @include breakpoint(md){
         padding-bottom: 250px;
     }
     @include breakpoint(sm){
         padding-bottom: 100px;
     }
-    .footer-bg{
-        @include background;
-        content: "";
+
+    .container,
+    .container-2 {
+        position: relative;
+        z-index: 2;
+    }
+
+    .copyright-area {
+        position: relative;
+        z-index: 2;
+    }
+
+    .footer-bg {
         width: 100%;
         height: 100%;
         position: absolute;
         top: 0;
         left: 0;
-        z-index: -1;
-        &:before{
-            background-color: var(--tl-color-common-black);
-            content: "";
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: .75;
-        }
+        z-index: 0;
+        pointer-events: none;
+        background:
+            radial-gradient(ellipse at 70% 100%, rgba(180, 110, 10, 0.28) 0%, rgba(100, 60, 5, 0.1) 45%, transparent 70%),
+            radial-gradient(ellipse at 20% 50%, rgba(15, 10, 2, 0.95) 0%, transparent 70%),
+            linear-gradient(160deg, #080603 0%, #0d0a04 40%, #100d05 70%, #0a0702 100%) !important;
     }
-    .footer-shade{
-        background: rgba(39, 38, 37, 0.64);
-        opacity: 0.3;
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        backdrop-filter: blur(29px);
-        height: 550px;
-        width: 100%;
+
+    .footer-accent-top {
         position: absolute;
         top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1px;
+        height: 60px;
+        background: linear-gradient(to bottom, transparent, var(--tl-color-theme-primary));
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .footer-accent-dot {
+        position: absolute;
+        top: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--tl-color-theme-primary);
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    .footer-glow-bottom {
+        position: absolute;
+        bottom: 0;
         left: 0;
-        z-index: -1;
+        right: 0;
+        height: 200px;
+        background: radial-gradient(ellipse at 50% 100%, rgba(190, 120, 10, 0.2) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .footer-shade {
+        display: none;
     }
 }
 .footer-wrap{
@@ -207,7 +241,8 @@ START: Footer CSS
     bottom: -72px;
     left: 50%;
     transform: translateX(-50%);
-    z-index: -1;
+    z-index: 1;
+    pointer-events: none;
     @include breakpoint(sm){
         bottom: 0;
     }

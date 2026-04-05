@@ -7,7 +7,7 @@
         <meta name="description" content="">
 
         <!-- Site Title -->
-        <title>Antra - Architecture & Interior Design HTML Template</title>
+        <title>Luxarius — Contact</title>
 
         <!-- Place favicon.ico in the root directory -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
@@ -20,15 +20,30 @@
         <link rel="stylesheet" href="assets/css/nice-select.css">
         <link rel="stylesheet" href="assets/css/carouselTicker.css">
         <link rel="stylesheet" href="assets/css/animation.css">
+        <link rel="stylesheet" href="assets/css/twentytwenty.min.css">
         <link rel="stylesheet" href="assets/css/swiper.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
+        <style>
+    .primary-header {
+        background: transparent !important;
+        border-bottom: 1px solid transparent !important;
+        transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
+    }
+    .primary-header.fixed {
+        background:
+            radial-gradient(ellipse at 70% 100%, rgba(180,110,10,0.15) 0%, rgba(100,60,5,0.05) 45%, transparent 70%),
+            linear-gradient(160deg, #080603 0%, #0d0a04 40%, #100d05 70%, #0a0702 100%) !important;
+        border-bottom: 1px solid rgba(202,160,92,0.18) !important;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.5) !important;
+    }
+        </style>
     </head>
 
     <body>
 
         <!-- preloader -->
         <div class="preloader overflow-hidden">
-            <div class="site-name"><span>ANTRA</span></div>
+            <div class="site-name"><span>Luxarius</span></div>
             <div class="preloader-gutters">
                 <div class="bar">
                     <div class="inner-bar"></div>
@@ -66,86 +81,44 @@
                         <div class="header-left-wrap">
                             <div class="header-logo d-lg-block">
                                 <a href="index.html">
-                                    <img src="assets/img/logo/logo-2.png" alt="logo">
+                                    <img src="assets/img/logo/Logo-3.png" alt="Luxarius logo">
                                 </a>
                             </div>
                             <div class="header-menu-wrap">
                                 <div class="mobile-menu-items">
                                     <ul>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Home</a>
-                                            <ul>
-                                                <li><a href="index.html">Home One</a></li>
-                                                <li><a href="index-2.html">Home Two</a></li>
-                                                <li><a href="index-3.html">Home Three</a></li>
-                                                <li><a href="index-4.html">Home Four</a></li>
-                                                <li><a href="index-5.html">Home Five</a></li>
-                                                <li><a href="index-6.html">Home Six</a></li>
-                                                <li><a href="index-7.html">Home Seven</a></li>
-                                                <li><a href="index-8.html">Home Eight</a></li>
-                                                <li><a href="index-9.html">Home Nine</a></li>
-                                            </ul>
+                                        <li>
+                                            <a href="index.html">Home</a>
                                         </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="service.html">Services</a>
-                                            <ul>
-                                                <li><a href="service.html">Service Style 1</a></li>
-                                                <li><a href="service-2.html">Service Style 2</a></li>
-                                                <li><a href="service-3.html">Service Style 3</a></li>
-                                                <li><a href="service-details.html">Service Details</a></li>
-                                            </ul>
+                                        <li>
+                                            <a href="about.html">About</a>
                                         </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="service.html">Portfolio</a>
-                                            <ul>
-                                                <li><a href="portfolio.html">Portfolio Style 1</a></li>
-                                                <li><a href="portfolio-2.html">Portfolio Style 2</a></li>
-                                                <li><a href="portfolio-3.html">Portfolio Style 3</a></li>
-                                                <li><a href="portfolio-details.html">Portfolio Details</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="#">Pages</a>
-                                            <ul>
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="team.html">Team</a></li>
-                                                <li><a href="team-details.html">Team Details</a></li>
-                                                <li><a href="pricing.html">Pricing Plans</a></li>
-                                                <li><a href="gallary-1.html">Gallary Style 1</a></li>
-                                                <li><a href="gallary-2.html">Gallary Style 2</a></li>
-                                                <li><a href="shop.html">Shop</a></li>
-                                                <li><a href="shop-details.html">Shop Single</a></li>
-                                                <li><a href="faq.html">Faq</a></li>
-                                                <li><a href="error.html">404 Error</a></li>
-                                                <li><a href="coming-soon.html">Coming Soon</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="menu-item-has-children">
-                                            <a href="blog-grid.html">Blog</a>
-                                            <ul>
-                                                <li><a href="blog-grid.html">Blog Grid</a></li>
-                                                <li><a href="blog-list.html">Blog List</a></li>
-                                                <li><a href="blog-standard.html">Blog Standard</a></li>
-                                                <li><a href="blog-single.html">Blog Single</a></li>
-                                                <li><a href="blog-details.html">Blog Details</a></li>
-                                            </ul>
+                                        <li>
+                                            <a href="service.html">Frequency Question</a>
                                         </li>
                                         <li class="active"><a href="contact.html">Contact</a></li>
+                                        <li class="menu-item-has-children">
+                                            <a href="#">Product</a>
+                                            <ul>
+                                                <li><a href="shop.html">Shop</a></li>
+                                                <li><a href="shop-details.html">Product Single</a></li>
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
                             <!-- /.header-menu-wrap -->
                         </div>
                         <div class="header-right-wrap">
-                            <a href="tel:(+480) 123 678 900" class="header-contact">
+                            <a href="tel:+212664529010" class="header-contact">
                                 <span class="icon"><i class="fa-regular fa-phone"></i></span>
                                 <span class="content">
-                                    <span class="call-text">Call Us Phone</span>
-                                    <span class="call-number">(+480) 123 678 900</span>
+                                    <span class="call-text">Appelez-nous</span>
+                                    <span class="call-number">(+212) 664-529010</span>
                                 </span>
                             </a>
                             <div class="header-btn-wrap">
-                                <a href="contact.html" class="tl-primary-btn header-btn">Get in Touch</a>
+                                <a href="https://luxarius.ma/demande-essai/" target="_blank" rel="noopener noreferrer" class="tl-primary-btn header-btn"> Demander un essai</a>
                             </div>
                             <div class="search-icon dl-search-icon">
                                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -217,7 +190,7 @@
                 </div>
                 <div class="side-menu-wrap"></div>
                 <div class="side-menu-about">
-                    <h4 class="title">We Shape Interior Designs, Crafting Timeless and Inspiring Spaces</h4>
+                    <h4 class="title">Fauteuils de massage professionnels pour particuliers et entreprises.</h4>
                 </div>
                 <div class="side-menu-gallary">
                     <div class="side-menu-gallary-item">
@@ -242,13 +215,13 @@
                 <div class="side-menu-contact">
                     <ul class="side-menu-list">
                         <li>
-                            5609 E Sprague Ave, <br>Spokane Valley, WA 99212,<br> USA
+                            Casablanca, Maroc <br>Livraison partout au Maroc
                         </li>
                         <li>
-                            <a href="tel:+0844560789">+(084) 456-0789</a>
+                            <a href="tel:+212664529010">(+212) 664-529010</a>
                         </li>
                         <li>
-                            <a class="mail" href="mailto:support@example.com">support@example.com</a>
+                            <a class="mail" href="mailto:contact@luxarius.ma">contact@luxarius.ma</a>
                         </li>
                     </ul>
                 </div>
@@ -261,6 +234,7 @@
             </div>
         </div>
         <!--/.sidebar-area-->
+        <div id="sidebar-overlay"></div>
 
         <div class="mobile-side-menu">
             <div class="side-menu-content">
@@ -276,15 +250,15 @@
                     <ul class="side-menu-list">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <p>Valentin, Street Road 24, New York, </p>
+                            <p>Casablanca, Maroc – Livraison nationale</p>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
-                            <a href="tel:+000123456789">+000 123 (456) 789</a>
+                            <a href="tel:+212664529010">(+212) 664-529010</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope-open-text"></i>
-                            <a href="mailto:antra@gmail.com">antra@gmail.com</a>
+                            <a href="mailto:contact@luxarius.ma">contact@luxarius.ma</a>
                         </li>
                     </ul>
                 </div>
@@ -308,7 +282,7 @@
             <div class="container">
                 <div class="page-header-content">
                     <h1 class="title">Contact Us</h1>
-                    <h4 class="sub-title"><a class='home' href='service.html'>Home </a><span class="icon">-</span><a class='inner-page' href='blog-details.html'> Contact Us</a></h4>
+                    <h4 class="sub-title"><a class="home" href="index.html">Home </a><span class="icon">-</span><a class="inner-page" href="contact.html"> Contact</a></h4>
                 </div>
             </div>
         </section>
@@ -404,71 +378,80 @@
             </div>
         </div>
 
-        <footer class="footer-section overflow-hidden">
-            <div class="footer-bg" data-background="assets/img/bg-img/footer-bg.png"></div>
-            <div class="footer-shade"></div>
-            <div class="container container-2">
-                <div class="row footer-wrap">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget">
-                            <div class="widget-header">
-                                <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo-2.png" alt="logo"></a>
-                                </div>
-                            </div>
-                            <p class="mb-10">We transform your vision into beautifully <br> crafted spaces.</p>
-                            <p class="mb-0">5609 E Sprague Ave, Spokane Valley, <br> WA 99212, USA</p>
+       <footer class="footer-section overflow-hidden" style="
+    position: relative;
+    background:
+        radial-gradient(ellipse at 70% 100%, rgba(180,110,10,0.28) 0%, rgba(100,60,5,0.10) 45%, transparent 70%),
+        radial-gradient(ellipse at 20% 50%, rgba(15,10,2,0.95) 0%, transparent 70%),
+        linear-gradient(160deg, #080603 0%, #0d0a04 40%, #100d05 70%, #0a0702 100%);
+">
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,#caa05c);z-index:1;"></div>
+    <div style="position:absolute;top:60px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:#caa05c;z-index:1;"></div>
+    <div style="position:absolute;bottom:0;left:0;right:0;height:200px;background:radial-gradient(ellipse at 50% 100%,rgba(190,120,10,0.20) 0%,transparent 70%);pointer-events:none;z-index:0;"></div>
+
+    <div class="container container-2" style="position:relative;z-index:2;">
+        <div class="row footer-wrap">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <div class="widget-header">
+                        <div class="footer-logo">
+                            <a href="index.html"><img src="assets/img/logo/Logo-3.png" alt="logo"></a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget footer-col-2">
-                            <ul class="footer-list">
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="service.html">Services</a></li>
-                                <li><a href="contact.html">Careers</a></li>
-                                <li><a href="team.html">our Team</a></li>
-                                <li><a href="blog-grid.html">Blog</a></li>
-                                <li><a href="contact.html">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget footer-col-2 pl-0">
-                            <ul class="footer-list">
-                                <li><a href="portfolio-details.html">Our Projects</a></li>
-                                <li><a href="contact.html">Partners</a></li>
-                                <li><a href="contact.html">Partners Program</a></li>
-                                <li><a href="contact.html">Affiliate Program</a></li>
-                                <li><a href="contact.html">Terms & Conditions</a></li>
-                                <li><a href="contact.html">Support Center</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget">
-                            <div class="footer-address">
-                                <a class="number" href="tel:+(084) 456-0789">+(084) 456-0789</a>
-                                <a class="mail" href="tel:">support@example.com</a>
-                                <ul class="social-list">
-                                    <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">Instagram</a></li>
-                                    <li><a href="#">YouTube</a></li>
-                                    <li><a href="#">Twitter</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                    <p class="mb-10">Fauteuils de massage haut de gamme pour le bien-être au quotidien.</p>
+                    <p class="mb-0">Casablanca, Maroc <br> Livraison & installation partout au Maroc</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget footer-col-2">
+                    <ul class="footer-list">
+                        <li><a href="https://luxarius.ma/" target="_blank" rel="noopener noreferrer">Accueil</a></li>
+                        <li><a href="https://luxarius.ma/qui-sommes-nous/" target="_blank" rel="noopener noreferrer">À propos</a></li>
+                        <li><a href="https://luxarius.ma/contact/" target="_blank" rel="noopener noreferrer">Contact</a></li>
+                        <li><a href="https://luxarius.ma/garantie/" target="_blank" rel="noopener noreferrer">Garantie</a></li>
+                        <li><a href="https://luxarius.ma/blog/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget footer-col-2 pl-0">
+                    <ul class="footer-list">
+                        <li><a href="https://luxarius.ma/product/president/" target="_blank" rel="noopener noreferrer">PRESIDENT</a></li>
+                        <li><a href="https://luxarius.ma/product/luxor/" target="_blank" rel="noopener noreferrer">LUXOR</a></li>
+                        <li><a href="https://luxarius.ma/product/premium/" target="_blank" rel="noopener noreferrer">PREMIUM+</a></li>
+                        <li><a href="https://luxarius.ma/product/comfort/" target="_blank" rel="noopener noreferrer">COMFORT</a></li>
+                        <li><a href="https://luxarius.ma/product/king/" target="_blank" rel="noopener noreferrer">KING</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <div class="footer-address">
+                        <a class="number" href="tel:+212664529010">(+212) 664-529010</a>
+                        <a class="mail" href="mailto:contact@luxarius.ma">contact@luxarius.ma</a>
+                        <ul class="social-list">
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">YouTube</a></li>
+                            <li><a href="#">Twitter</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="copyright-area">
-                <div class="container">
-                    <div class="copyright-content">
-                        <p>© 2025 antra. All Rights Reserved.</p>
-                    </div>
-                </div>
+        </div>
+    </div>
+
+    <div class="copyright-area" style="position:relative;z-index:2;border-top:1px solid rgba(202,160,92,0.15);">
+        <div class="container">
+            <div class="copyright-content">
+                <p>© 2025 Luxarius. All Rights Reserved.</p>
             </div>
-            <div class="footer-text"><span>antra</span></div>
-        </footer>
+        </div>
+    </div>
+
+    <div class="footer-text" style="opacity:0.03;"><span>Luxarius</span></div>
+
+</footer>
         <!-- ./ footer-section -->
 
         </div>

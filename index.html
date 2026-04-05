@@ -24,80 +24,195 @@
         <link rel="stylesheet" href="assets/css/swiper.min.css">
         <link rel="stylesheet" href="assets/css/main.css">
         <style>
-              .gallery-section {
-      padding: 60px 20px;
+    /* Modèles en situation — Luxarius */
+    .lux-model-gallery {
+      position: relative;
+      padding: 100px 20px 110px;
+      overflow: hidden;
+    }
+    .lux-model-gallery__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 0%, rgba(180, 110, 10, 0.14) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 100%, rgba(100, 60, 5, 0.12) 0%, transparent 50%),
+        linear-gradient(165deg, #080603 0%, #0d0a04 38%, #100d05 72%, #0a0702 100%);
+      z-index: 0;
+    }
+    .lux-model-gallery__bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, transparent 22%, transparent 78%, rgba(0,0,0,0.4) 100%);
+      pointer-events: none;
+    }
+    .lux-model-gallery .lux-model-gallery__inner {
+      position: relative;
+      z-index: 1;
       max-width: 1200px;
       margin: 0 auto;
     }
-
-    .gallery-title {
+    .lux-model-gallery__head {
       text-align: center;
-      font-size: 32px;
-      font-weight: 300;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: #333;
-      margin-bottom: 40px;
+      max-width: 640px;
+      margin: 0 auto 52px;
     }
-
-    .gallery-grid {
+    .lux-model-gallery__eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #caa05c;
+      margin: 0 0 14px;
+    }
+    .lux-model-gallery__title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.15;
+      color: #fff;
+      margin: 0 0 16px;
+      letter-spacing: 0.02em;
+    }
+    .lux-model-gallery__title span {
+      color: #caa05c;
+    }
+    .lux-model-gallery__lead {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.62);
+    }
+    .lux-model-gallery__grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(2, 240px);
-      gap: 12px;
+      grid-template-rows: repeat(3, minmax(160px, 22vw));
+      gap: 14px;
     }
-
-    .gallery-item {
+    .lux-model-gallery__card {
       position: relative;
       overflow: hidden;
-      border-radius: 4px;
+      border-radius: 20px;
       cursor: pointer;
+      border: 1px solid rgba(202, 160, 92, 0.12);
+      background: #0a0804;
+      box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
     }
-
-    .gallery-item img {
+    .lux-model-gallery__card--feature {
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+    .lux-model-gallery__card--wide {
+      grid-column: 3 / 5;
+    }
+    .lux-model-gallery__card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
       display: block;
+      transition: transform 0.75s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.5s ease;
     }
-
-    .gallery-item:hover img {
-      transform: scale(1.1);
+    .lux-model-gallery__card:hover img,
+    .lux-model-gallery__card:focus-within img {
+      transform: scale(1.06);
+      filter: brightness(1.05);
     }
-
-    .gallery-item .overlay {
+    .lux-model-gallery__shade {
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      display: flex;
-      align-items: flex-end;
-      padding: 16px;
+      background: linear-gradient(to top, rgba(8, 6, 3, 0.92) 0%, rgba(8, 6, 3, 0.35) 38%, transparent 65%);
+      pointer-events: none;
+      transition: opacity 0.4s ease;
     }
-
-    .gallery-item:hover .overlay {
-      opacity: 1;
+    .lux-model-gallery__card:hover .lux-model-gallery__shade,
+    .lux-model-gallery__card:focus-within .lux-model-gallery__shade {
+      opacity: 0.95;
+      background: linear-gradient(to top, rgba(8, 6, 3, 0.95) 0%, rgba(40, 28, 8, 0.5) 45%, transparent 72%);
     }
-
-    .gallery-item .overlay span {
+    .lux-model-gallery__caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 20px 22px 22px;
+      z-index: 2;
+    }
+    .lux-model-gallery__caption::before {
+      content: "";
+      display: block;
+      width: 36px;
+      height: 2px;
+      background: #caa05c;
+      margin-bottom: 12px;
+      transform: scaleX(0.35);
+      transform-origin: left;
+      transition: transform 0.45s ease;
+    }
+    .lux-model-gallery__card:hover .lux-model-gallery__caption::before,
+    .lux-model-gallery__card:focus-within .lux-model-gallery__caption::before {
+      transform: scaleX(1);
+    }
+    .lux-model-gallery__caption span {
+      display: block;
       color: #fff;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
+      line-height: 1.35;
     }
-
+    .lux-model-gallery__card--feature .lux-model-gallery__caption span {
+      font-size: clamp(17px, 2vw, 22px);
+      font-weight: 400;
+    }
+    .lux-model-gallery__card:focus {
+      outline: 2px solid #caa05c;
+      outline-offset: 3px;
+    }
     @media (max-width: 991px) {
-      .gallery-item:hover img { transform: none; }
+      .lux-model-gallery { padding: 72px 18px 80px; }
+      .lux-model-gallery__grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: none;
+        grid-auto-rows: minmax(160px, 42vw);
+      }
+      .lux-model-gallery__card--feature {
+        grid-column: 1 / -1;
+        grid-row: auto;
+        min-height: 280px;
+      }
+      .lux-model-gallery__card--wide {
+        grid-column: 1 / -1;
+      }
+      .lux-model-gallery__card:hover img,
+      .lux-model-gallery__card:focus-within img {
+        transform: scale(1.03);
+      }
+    }
+    @media (max-width: 575px) {
+      .lux-model-gallery__grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: minmax(200px, 55vw);
+      }
+      .lux-model-gallery__card--feature {
+        min-height: 240px;
+      }
+      .lux-model-gallery__card--wide {
+        grid-column: 1;
+      }
+    }
+     /* Default: transparent at top */
+    .primary-header {
+        background: transparent !important;
+        border-bottom: 1px solid transparent !important;
+        transition: background 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
     }
 
-    @media (max-width: 768px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, 200px);
-      }
-      .gallery-title { font-size: 24px; }
+    /* Scrolled: dark gold background */
+    .primary-header.fixed {
+        background:
+            radial-gradient(ellipse at 70% 100%, rgba(180,110,10,0.15) 0%, rgba(100,60,5,0.05) 45%, transparent 70%),
+            linear-gradient(160deg, #080603 0%, #0d0a04 40%, #100d05 70%, #0a0702 100%) !important;
+        border-bottom: 1px solid rgba(202,160,92,0.18) !important;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.5) !important;
     }
         </style>
     </head>
@@ -151,7 +266,7 @@
                                 <div class="mobile-menu-items">
                                     <ul>
                                         <li>
-                                            <a href="#">Home</a>                                        
+                                            <a href="index.html">Home</a>
                                         </li>
                                         <li>
                                             <a href="about.html">About</a>
@@ -646,215 +761,645 @@
             </div>
         </section>
         <!-- ./ process-section -->
-
-       <section class="gallery-section">
-    <h2 class="gallery-title">Agencement avec nos modèles</h2>
-    <div class="gallery-grid">
-
-      <div class="gallery-item">
-        <img src="./assets/img/images/bureau-prive.jpg" alt="Bureau Privé" loading="lazy" />
-        <div class="overlay"><span>Bureau Privé</span></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="./assets/img/images/bureau-executif.jpg" alt="Bureau Exécutif" loading="lazy" />
-        <div class="overlay"><span>Bureau Exécutif</span></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="./assets/img/images/salon-moderne.jpg" alt="Salon Moderne" loading="lazy" />
-        <div class="overlay"><span>Salon Moderne</span></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="./assets/img/images/aeroport.jpg" alt="Espace Aéroport" loading="lazy" />
-        <div class="overlay"><span>Espace Aéroport</span></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="./assets/img/images/hambre.jpg" alt="Chambre Cosy" loading="lazy" />
-        <div class="overlay"><span>Chambre Cosy</span></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="./assets/img/images/clinique.jpg" alt="Clinique & Spa" loading="lazy" />
-        <div class="overlay"><span>Clinique & Spa</span></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="./assets/img/images/salon-luxe.jpg" alt="Salon Luxe" loading="lazy" />
-        <div class="overlay"><span>Salon Luxe</span></div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="./assets/img/images/appartement.jpg" alt="Appartement Vue Ville" loading="lazy" />
-        <div class="overlay"><span>Appartement Vue Ville</span></div>
-      </div>
-
-    </div>
-  </section>
-        <!-- ./ project-section -->
-<section class="testimonial-section fade-wrapper" style="
+<!-- Avantages & Garanties Section -->
+<section class="overflow-hidden fade-wrapper" style="
     position: relative;
-    overflow: hidden;
-    padding: 0;
+    padding: 100px 0;
     background:
         radial-gradient(ellipse at 70% 100%, rgba(180,110,10,0.28) 0%, rgba(100,60,5,0.10) 45%, transparent 70%),
         radial-gradient(ellipse at 20% 50%, rgba(15,10,2,0.95) 0%, transparent 70%),
         linear-gradient(160deg, #080603 0%, #0d0a04 40%, #100d05 70%, #0a0702 100%);
 ">
-    <!-- Subtle top vignette -->
+    <!-- Top amber accent -->
     <div style="
-        position: absolute; top: 0; left: 0; right: 0;
-        height: 120px;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
-        pointer-events: none; z-index: 0;
+        position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+        width: 1px; height: 60px;
+        background: linear-gradient(to bottom, transparent, #caa05c);
+        z-index: 1;
+    "></div>
+    <div style="
+        position: absolute; top: 60px; left: 50%; transform: translateX(-50%);
+        width: 10px; height: 10px; border-radius: 50%;
+        background: #caa05c;
+        z-index: 1;
     "></div>
 
     <!-- Bottom amber glow -->
     <div style="
         position: absolute; bottom: 0; left: 0; right: 0;
         height: 200px;
-        background: radial-gradient(ellipse at 65% 100%, rgba(190,120,10,0.30) 0%, rgba(130,75,5,0.12) 45%, transparent 75%);
+        background: radial-gradient(ellipse at 50% 100%, rgba(190,120,10,0.20) 0%, transparent 70%);
         pointer-events: none; z-index: 0;
     "></div>
 
-    <!-- Watermark -->
-    <div style="
-        position: absolute; right: -40px; top: 50%;
-        transform: translateY(-50%);
-        font-size: 160px; font-weight: 900;
-        color: rgba(255,255,255,0.03);
-        letter-spacing: 0.05em;
-        pointer-events: none;
-        user-select: none;
-        z-index: 0;
-    "><span>Luxarius</span></div>
+    <div class="container" style="position: relative; z-index: 2;">
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <div class="container" style="position: relative; z-index: 2; padding-top: 90px; padding-bottom: 70px;">
-
-        <!-- Section heading centered -->
-        <div class="text-center fade-top" style="margin-bottom: 40px;">
-            <h4 style="
-                color: #caa05c;
-                font-size: 11px;
-                letter-spacing: 0.15em;
-                text-transform: uppercase;
-                margin-bottom: 12px;
-                font-weight: 600;
-            ">Avis</h4>
+        <!-- Title -->
+        <div class="text-center fade-top" style="margin-bottom: 70px; margin-top: 20px;">
             <h2 style="
                 color: #fff;
                 font-size: clamp(24px, 3vw, 38px);
-                font-weight: 700;
+                font-weight: 300;
+                letter-spacing: 0.08em;
                 margin: 0;
-            ">Témoignages de <span style="color:#fff;">clients satisfaits</span></h2>
+            ">Avantages & Garanties</h2>
+            <div style="width: 50px; height: 1px; background: #caa05c; margin: 18px auto 0;"></div>
         </div>
 
-        <!-- Big quote mark -->
-        <div class="text-center" style="margin-bottom: 10px;">
-            <span style="
-                font-size: 90px;
-                line-height: 0.6;
-                color: #caa05c;
-                font-family: Georgia, 'Times New Roman', serif;
-                display: block;
-                opacity: 0.9;
-            ">"</span>
-        </div>
+        <!-- 3 Cards Row -->
+        <div class="row g-4 fade-top">
 
-        <!-- ===== SWIPER CAROUSEL ===== -->
-        <div class="testi-carousel swiper" style="max-width: 720px; margin: 0 auto;">
-            <div class="swiper-wrapper">
-
-                <!-- Slide 1 -->
-                <div class="swiper-slide">
-                    <div class="text-center" style="padding: 0 30px;">
-                        <p style="color: rgba(255,255,255,0.92); font-size: clamp(14px, 1.6vw, 17px); line-height: 1.85; font-style: italic; margin-bottom: 32px;">"Nous avons acheté la chaise l'année dernière. Un achat au point. Après avoir travaillé à l'ordinateur, la meilleure détente. De plus, le fauteuil est visuellement très agréable et fait partie du mobilier de la chambre. Je recommande à tous les sceptiques."</p>
-                        <div style="width: 40px; height: 1px; background: #caa05c; margin: 0 auto 18px;"></div>
-                        <h4 style="color: #caa05c; font-size: 13px; letter-spacing: 0.1em; margin: 0 0 4px; font-weight: 600;">M. Idriss K*****</h4>
-                        <span style="color: rgba(255,255,255,0.45); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;">Client particulier</span>
+            <!-- Card 1: Marque américaine -->
+            <div class="col-lg-4 col-md-6">
+                <div class="avantage-card" style="
+                    text-align: center;
+                    padding: 48px 32px;
+                    border: 1px solid rgba(202,160,92,0.15);
+                    border-radius: 4px;
+                    background: rgba(255,255,255,0.02);
+                    transition: all 0.35s ease;
+                    cursor: default;
+                    height: 100%;
+                ">
+                    <!-- Icon -->
+                    <div style="margin-bottom: 28px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52" fill="none">
+                            <path d="M8 20 Q8 12 16 10 L32 6 L48 10 Q56 12 56 20 L56 36 Q56 52 32 58 Q8 52 8 36 Z" stroke="#caa05c" stroke-width="1.8" stroke-linejoin="round"/>
+                            <path d="M8 20 Q8 12 16 10 L32 6 L48 10 Q56 12 56 20 L56 36 Q56 52 32 58 Q8 52 8 36 Z" fill="#caa05c" opacity="0.05"/>
+                            <!-- Stars on shield -->
+                            <path d="M32 18 l2.5 5 5.5 0.8 -4 3.9 0.9 5.5 -4.9-2.6 -4.9 2.6 0.9-5.5 -4-3.9 5.5-0.8Z" stroke="#caa05c" stroke-width="1.5" stroke-linejoin="round"/>
+                            <!-- Flag lines -->
+                            <path d="M20 38 L44 38" stroke="#caa05c" stroke-width="1.5" stroke-linecap="round" opacity="0.4"/>
+                            <path d="M24 44 L40 44" stroke="#caa05c" stroke-width="1.5" stroke-linecap="round" opacity="0.25"/>
+                        </svg>
                     </div>
+                    <h3 style="
+                        color: #fff;
+                        font-size: 18px;
+                        font-weight: 600;
+                        margin-bottom: 16px;
+                        letter-spacing: 0.03em;
+                    ">Marque américaine</h3>
+                    <p style="
+                        color: rgba(255,255,255,0.55);
+                        font-size: 14px;
+                        line-height: 1.85;
+                        margin: 0;
+                    ">Luxarius est la première firme spécialisée dans la distribution des fauteuils massants et les accessoires de massage. Une technologie créée depuis 2008 aux USA.</p>
                 </div>
-
-                <!-- Slide 2 -->
-                <div class="swiper-slide">
-                    <div class="text-center" style="padding: 0 30px;">
-                        <p style="color: rgba(255,255,255,0.92); font-size: clamp(14px, 1.6vw, 17px); line-height: 1.85; font-style: italic; margin-bottom: 32px;">"Service professionnel et amical lors de l'achat et de la livraison de marchandises sur place."</p>
-                        <div style="width: 40px; height: 1px; background: #caa05c; margin: 0 auto 18px;"></div>
-                        <h4 style="color: #caa05c; font-size: 13px; letter-spacing: 0.1em; margin: 0 0 4px; font-weight: 600;">Mme. Amina C*****</h4>
-                        <span style="color: rgba(255,255,255,0.45); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;">Cliente professionnelle</span>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="swiper-slide">
-                    <div class="text-center" style="padding: 0 30px;">
-                        <p style="color: rgba(255,255,255,0.92); font-size: clamp(14px, 1.6vw, 17px); line-height: 1.85; font-style: italic; margin-bottom: 32px;">"J'ai le fauteuil PRESIDENT depuis plusieurs mois maintenant et je ne peux pas imaginer ma vie sans lui. Le massage est devenu mon quotidien. L'entreprise est recommandée. C'est un achat extrêmement réussi."</p>
-                        <div style="width: 40px; height: 1px; background: #caa05c; margin: 0 auto 18px;"></div>
-                        <h4 style="color: #caa05c; font-size: 13px; letter-spacing: 0.1em; margin: 0 0 4px; font-weight: 600;">Dr. Nadia El*********</h4>
-                        <span style="color: rgba(255,255,255,0.45); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;">Cliente particulière</span>
-                    </div>
-                </div>
-
-                <!-- Slide 4 -->
-                <div class="swiper-slide">
-                    <div class="text-center" style="padding: 0 30px;">
-                        <p style="color: rgba(255,255,255,0.92); font-size: clamp(14px, 1.6vw, 17px); line-height: 1.85; font-style: italic; margin-bottom: 32px;">"Tous les amis à qui j'ai proposé d'utiliser la chaise étaient très sceptiques, mais après une minute de massage ils n'arrivaient pas à croire ce que ce miracle peut faire."</p>
-                        <div style="width: 40px; height: 1px; background: #caa05c; margin: 0 auto 18px;"></div>
-                        <h4 style="color: #caa05c; font-size: 13px; letter-spacing: 0.1em; margin: 0 0 4px; font-weight: 600;">M. Chakib N*****</h4>
-                        <span style="color: rgba(255,255,255,0.45); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;">Client particulier</span>
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Pagination dots -->
-            <div class="swiper-pagination" style="position: relative; margin-top: 36px; bottom: auto;"></div>
+            <!-- Card 2: Garantie 2 ans (center - highlighted) -->
+            <div class="col-lg-4 col-md-6">
+                <div class="avantage-card avantage-card--active" style="
+                    text-align: center;
+                    padding: 48px 32px;
+                    border: 1px solid rgba(202,160,92,0.45);
+                    border-radius: 4px;
+                    background: rgba(202,160,92,0.07);
+                    transition: all 0.35s ease;
+                    cursor: default;
+                    height: 100%;
+                    position: relative;
+                ">
+                    <!-- Top gold line accent -->
+                    <div style="
+                        position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+                        width: 40px; height: 2px; background: #caa05c;
+                        border-radius: 0 0 2px 2px;
+                    "></div>
+                    <!-- Icon -->
+                    <div style="margin-bottom: 28px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52" fill="none">
+                            <!-- Gear large -->
+                            <path d="M32 20 a12 12 0 1 1 0 24 a12 12 0 0 1 0-24Z" stroke="#caa05c" stroke-width="1.8"/>
+                            <circle cx="32" cy="32" r="5" stroke="#caa05c" stroke-width="1.8"/>
+                            <!-- Gear teeth -->
+                            <path d="M32 10 L32 16 M32 48 L32 54 M10 32 L16 32 M48 32 L54 32" stroke="#caa05c" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M17.5 17.5 L21.7 21.7 M42.3 42.3 L46.5 46.5 M17.5 46.5 L21.7 42.3 M42.3 21.7 L46.5 17.5" stroke="#caa05c" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+                            <!-- Small gear -->
+                            <circle cx="46" cy="20" r="6" stroke="#caa05c" stroke-width="1.5" opacity="0.5"/>
+                            <circle cx="46" cy="20" r="2.5" stroke="#caa05c" stroke-width="1.5" opacity="0.5"/>
+                        </svg>
+                    </div>
+                    <h3 style="
+                        color: #caa05c;
+                        font-size: 18px;
+                        font-weight: 600;
+                        margin-bottom: 16px;
+                        letter-spacing: 0.03em;
+                    ">Garantie de 2 ans</h3>
+                    <p style="
+                        color: rgba(255,255,255,0.65);
+                        font-size: 14px;
+                        line-height: 1.85;
+                        margin: 0;
+                    ">Tous nos fauteuils sont garantis 2 ans (pièces et main d'œuvre). Suivi des pièces détachées pendant 10 ans.</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Livraison partout au Maroc -->
+            <div class="col-lg-4 col-md-6">
+                <div class="avantage-card" style="
+                    text-align: center;
+                    padding: 48px 32px;
+                    border: 1px solid rgba(202,160,92,0.15);
+                    border-radius: 4px;
+                    background: rgba(255,255,255,0.02);
+                    transition: all 0.35s ease;
+                    cursor: default;
+                    height: 100%;
+                ">
+                    <!-- Icon -->
+                    <div style="margin-bottom: 28px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="52" height="52" fill="none">
+                            <!-- Map pin -->
+                            <path d="M32 6 C20 6 12 16 12 26 C12 40 32 58 32 58 C32 58 52 40 52 26 C52 16 44 6 32 6Z" stroke="#caa05c" stroke-width="1.8" stroke-linejoin="round"/>
+                            <path d="M32 6 C20 6 12 16 12 26 C12 40 32 58 32 58 C32 58 52 40 52 26 C52 16 44 6 32 6Z" fill="#caa05c" opacity="0.05"/>
+                            <circle cx="32" cy="26" r="7" stroke="#caa05c" stroke-width="1.8"/>
+                            <!-- Morocco map hint lines -->
+                            <path d="M22 24 Q28 20 34 24 Q40 28 46 24" stroke="#caa05c" stroke-width="1.2" stroke-linecap="round" opacity="0.3"/>
+                        </svg>
+                    </div>
+                    <h3 style="
+                        color: #fff;
+                        font-size: 18px;
+                        font-weight: 600;
+                        margin-bottom: 16px;
+                        letter-spacing: 0.03em;
+                    ">Livraison partout au Maroc</h3>
+                    <p style="
+                        color: rgba(255,255,255,0.55);
+                        font-size: 14px;
+                        line-height: 1.85;
+                        margin: 0;
+                    ">Avec l'option livraison par un expert, cela comprend la livraison, l'installation, la mise en service et une formation à l'utilisation de votre fauteuil de massage Luxarius.</p>
+                </div>
+            </div>
+
         </div>
+        <!-- End Row -->
 
     </div>
 
-    <!-- ===== STATS BAR ===== -->
-    <div style="
-        position: relative;
-        z-index: 2;
-        border-top: 1px solid rgba(202,160,92,0.18);
-        background: rgba(4,3,1,0.65);
-        backdrop-filter: blur(6px);
-        padding: 38px 0;
-    ">
-        <div class="container">
-            <div class="row text-center g-0">
-                <div class="col-6 col-md-3" style="padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.08);">
-                    <h3 style="color:#fff; font-size: clamp(28px,3vw,42px); font-weight:800; margin:0 0 4px; line-height:1;">15<span style="color:#caa05c; font-size:0.7em;">+</span></h3>
-                    <span style="color:rgba(255,255,255,0.5); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;">Ans d'expérience</span>
-                </div>
-                <div class="col-6 col-md-3" style="padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.08);">
-                    <h3 style="color:#fff; font-size: clamp(28px,3vw,42px); font-weight:800; margin:0 0 4px; line-height:1;">4,377<span style="color:#caa05c; font-size:0.7em;">+</span></h3>
-                    <span style="color:rgba(255,255,255,0.5); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;">Clients satisfaits</span>
-                </div>
-                <div class="col-6 col-md-3" style="padding: 8px 16px; border-right: 1px solid rgba(255,255,255,0.08);">
-                    <h3 style="color:#fff; font-size: clamp(28px,3vw,42px); font-weight:800; margin:0 0 4px; line-height:1;">6<span style="color:#caa05c; font-size:0.7em;">+</span></h3>
-                    <span style="color:rgba(255,255,255,0.5); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;">Points de ventes</span>
-                </div>
-                <div class="col-6 col-md-3" style="padding: 8px 16px;">
-                    <h3 style="color:#fff; font-size: clamp(28px,3vw,42px); font-weight:800; margin:0 0 4px; line-height:1;">1,887<span style="color:#caa05c; font-size:0.7em;">+</span></h3>
-                    <span style="color:rgba(255,255,255,0.5); font-size:10px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;">Questions répondues</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <!-- Hover styles -->
     <style>
-        .testimonial-section .swiper-pagination { position: relative; margin-top: 36px; bottom: auto; }
-        .testimonial-section .swiper-pagination-bullet { width: 10px; height: 10px; background: rgba(255,255,255,0.3); opacity: 1; border-radius: 50%; transition: background 0.3s, transform 0.3s; }
-        .testimonial-section .swiper-pagination-bullet-active { background: #caa05c; transform: scale(1.3); }
+        .avantage-card:hover {
+            border-color: rgba(202,160,92,0.45) !important;
+            background: rgba(202,160,92,0.07) !important;
+            transform: translateY(-4px);
+        }
+        .avantage-card:hover h3 {
+            color: #caa05c !important;
+        }
+        .avantage-card--active:hover {
+            transform: translateY(-4px);
+        }
     </style>
 
 </section>
-        <!-- ./ testimonial-section -->
+
+<!-- End Avantages & Garanties -->
+       <section class="lux-model-gallery" aria-labelledby="lux-model-gallery-title">
+    <div class="lux-model-gallery__bg" aria-hidden="true"></div>
+    <div class="lux-model-gallery__inner">
+      <header class="lux-model-gallery__head">
+        <p class="lux-model-gallery__eyebrow">En situation réelle</p>
+        <h2 id="lux-model-gallery-title" class="lux-model-gallery__title">Agencement avec <span>nos modèles</span></h2>
+        <p class="lux-model-gallery__lead">Bureaux, salons, chambres ou espaces publics : nos fauteuils s’intègrent avec élégance partout où le bien-être compte.</p>
+      </header>
+      <div class="lux-model-gallery__grid">
+        <article class="lux-model-gallery__card lux-model-gallery__card--feature" tabindex="0">
+          <img src="assets/img/images/bureau-prive.jpg" alt="Bureau Privé" loading="lazy" width="800" height="1000" />
+          <div class="lux-model-gallery__shade" aria-hidden="true"></div>
+          <div class="lux-model-gallery__caption"><span>Bureau Privé</span></div>
+        </article>
+        <article class="lux-model-gallery__card" tabindex="0">
+          <img src="assets/img/images/bureau-executif.jpg" alt="Bureau Exécutif" loading="lazy" width="600" height="480" />
+          <div class="lux-model-gallery__shade" aria-hidden="true"></div>
+          <div class="lux-model-gallery__caption"><span>Bureau Exécutif</span></div>
+        </article>
+        <article class="lux-model-gallery__card" tabindex="0">
+          <img src="assets/img/images/salon-moderne.jpg" alt="Salon Moderne" loading="lazy" width="600" height="480" />
+          <div class="lux-model-gallery__shade" aria-hidden="true"></div>
+          <div class="lux-model-gallery__caption"><span>Salon Moderne</span></div>
+        </article>
+        <article class="lux-model-gallery__card" tabindex="0">
+          <img src="assets/img/images/aeroport.jpg" alt="Espace Aéroport" loading="lazy" width="600" height="480" />
+          <div class="lux-model-gallery__shade" aria-hidden="true"></div>
+          <div class="lux-model-gallery__caption"><span>Espace Aéroport</span></div>
+        </article>
+        <article class="lux-model-gallery__card" tabindex="0">
+          <img src="assets/img/images/hambre.jpg" alt="Chambre Cosy" loading="lazy" width="600" height="480" />
+          <div class="lux-model-gallery__shade" aria-hidden="true"></div>
+          <div class="lux-model-gallery__caption"><span>Chambre Cosy</span></div>
+        </article>
+        <article class="lux-model-gallery__card" tabindex="0">
+          <img src="assets/img/images/clinique.jpg" alt="Clinique &amp; Spa" loading="lazy" width="600" height="480" />
+          <div class="lux-model-gallery__shade" aria-hidden="true"></div>
+          <div class="lux-model-gallery__caption"><span>Clinique &amp; Spa</span></div>
+        </article>
+        <article class="lux-model-gallery__card" tabindex="0">
+          <img src="assets/img/images/salon-luxe.jpg" alt="Salon Luxe" loading="lazy" width="600" height="480" />
+          <div class="lux-model-gallery__shade" aria-hidden="true"></div>
+          <div class="lux-model-gallery__caption"><span>Salon Luxe</span></div>
+        </article>
+        <article class="lux-model-gallery__card lux-model-gallery__card--wide" tabindex="0">
+          <img src="assets/img/images/appartement.jpg" alt="Appartement vue ville" loading="lazy" width="1200" height="480" />
+          <div class="lux-model-gallery__shade" aria-hidden="true"></div>
+          <div class="lux-model-gallery__caption"><span>Appartement vue ville</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+        <!-- ./ project-section -->
+<section class="testimonial-section pt-150 fade-wrapper">
+    <div class="container container-2">
+
+        <!-- TOP ROW: heading left + rating+arrows right -->
+        <div class="row section-heading-wrap fade-top align-items-start">
+            <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+
+            <!-- LEFT: label + big heading -->
+            <div class="col-lg-4 col-md-12">
+                <div class="section-heading mb-0">
+                    <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">Avis clients</h4>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="section-heading section-heading-2 mb-0">
+                    <h2 class="section-title cursor-effect title-2">Témoignages de <span>clients <br> satisfaits</span></h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- RATING ROW -->
+        <div class="row align-items-center fade-top" style="border-top:1px solid rgba(0,0,0,0.1); padding: 28px 0; margin-bottom: 40px;">
+            <div class="col-lg-4 col-md-12"></div>
+            <div class="col-lg-8 col-md-12">
+                <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:20px;">
+
+                    <!-- Rating number + stars + count -->
+                    <div style="display:flex; align-items:center; gap:20px;">
+                        <div>
+                            <h3 style="font-size:52px; font-weight:900; margin:0; line-height:1; color:inherit;">4.9
+                                <span style="display:block; width:6px; height:6px; border-radius:50%; background:#caa05c; margin-top:6px;"></span>
+                            </h3>
+                        </div>
+                        <div>
+                            <div style="display:flex; gap:3px; margin-bottom:5px;">
+                                <i class="fa-solid fa-star" style="color:#caa05c; font-size:14px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c; font-size:14px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c; font-size:14px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c; font-size:14px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c; font-size:14px;"></i>
+                            </div>
+                            <span style="font-size:12px; opacity:0.55; letter-spacing:0.04em;">Plus de 500 clients</span>
+                        </div>
+                        <div style="width:1px; height:50px; background:rgba(0,0,0,0.12);"></div>
+                        <!-- Description -->
+                        <p style="margin:0; font-size:13px; line-height:1.7; max-width:240px; font-weight:600; opacity:0.75;">
+                            Luxarius accompagne au quotidien particuliers et professionnels avec des fauteuils massants fiables et confortables.
+                        </p>
+                    </div>
+
+                    <!-- Prev / Next arrows -->
+                    <div style="display:flex; gap:10px;">
+                        <button class="testi-prev-btn" style="width:44px;height:44px;border-radius:50%;background:#caa05c;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all 0.3s;" onmouseover="this.style.background='#8a6a30'" onmouseout="this.style.background='#caa05c'">
+                            <i class="fa-regular fa-arrow-left"></i>
+                        </button>
+                        <button class="testi-next-btn" style="width:44px;height:44px;border-radius:50%;background:#caa05c;border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all 0.3s;" onmouseover="this.style.background='#8a6a30'" onmouseout="this.style.background='#caa05c'">
+                            <i class="fa-regular fa-arrow-right"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- CARDS CAROUSEL (multi-slide) -->
+        <div class="testi-carousel swiper fade-top" style="overflow: visible;">
+            <div class="swiper-wrapper" style="align-items: stretch;">
+
+                <!-- Card 1 -->
+                <div class="swiper-slide" style="height:auto;">
+                    <div style="background:#fff;border-radius:16px;padding:30px 26px;box-shadow:0 2px 20px rgba(0,0,0,0.07);height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <div style="display:flex;gap:3px;margin-bottom:18px;">
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                            </div>
+                            <p style="font-size:14px;line-height:1.8;margin-bottom:24px;color:#333;">
+                                "Nous avons acheté la chaise l'année dernière. Un achat au point. Après avoir travaillé à l'ordinateur, la meilleure détente. Le fauteuil est visuellement très agréable. Je recommande à tous les sceptiques."
+                            </p>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:14px;">
+                            <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#caa05c,#8a6a30);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;flex-shrink:0;">I</div>
+                            <div>
+                                <h4 style="font-size:15px;font-weight:700;margin:0 0 2px;color:#111;">M. Idriss K*****</h4>
+                                <span style="font-size:12px;color:#999;">Client particulier</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="swiper-slide" style="height:auto;">
+                    <div style="background:#fff;border-radius:16px;padding:30px 26px;box-shadow:0 2px 20px rgba(0,0,0,0.07);height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <div style="display:flex;gap:3px;margin-bottom:18px;">
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                            </div>
+                            <p style="font-size:14px;line-height:1.8;margin-bottom:24px;color:#333;">
+                                "Service professionnel et amical lors de l'achat et de la livraison de marchandises sur place. Une équipe à l'écoute et très réactive. Je suis ravie de mon fauteuil Luxarius."
+                            </p>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:14px;">
+                            <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#caa05c,#8a6a30);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;flex-shrink:0;">A</div>
+                            <div>
+                                <h4 style="font-size:15px;font-weight:700;margin:0 0 2px;color:#111;">Mme. Amina C*****</h4>
+                                <span style="font-size:12px;color:#999;">Cliente professionnelle</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="swiper-slide" style="height:auto;">
+                    <div style="background:#fff;border-radius:16px;padding:30px 26px;box-shadow:0 2px 20px rgba(0,0,0,0.07);height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <div style="display:flex;gap:3px;margin-bottom:18px;">
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                            </div>
+                            <p style="font-size:14px;line-height:1.8;margin-bottom:24px;color:#333;">
+                                "J'ai le fauteuil PRESIDENT depuis plusieurs mois maintenant et je ne peux pas imaginer ma vie sans lui. Le massage est devenu mon quotidien. C'est un achat extrêmement réussi."
+                            </p>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:14px;">
+                            <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#caa05c,#8a6a30);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;flex-shrink:0;">N</div>
+                            <div>
+                                <h4 style="font-size:15px;font-weight:700;margin:0 0 2px;color:#111;">Dr. Nadia El*********</h4>
+                                <span style="font-size:12px;color:#999;">Cliente particulière</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="swiper-slide" style="height:auto;">
+                    <div style="background:#fff;border-radius:16px;padding:30px 26px;box-shadow:0 2px 20px rgba(0,0,0,0.07);height:100%;display:flex;flex-direction:column;justify-content:space-between;">
+                        <div>
+                            <div style="display:flex;gap:3px;margin-bottom:18px;">
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                                <i class="fa-solid fa-star" style="color:#caa05c;font-size:13px;"></i>
+                            </div>
+                            <p style="font-size:14px;line-height:1.8;margin-bottom:24px;color:#333;">
+                                "Tous les amis à qui j'ai proposé d'utiliser la chaise étaient très sceptiques, mais après une minute de massage ils n'arrivaient pas à croire ce que ce miracle peut faire."
+                            </p>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:14px;">
+                            <div style="width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#caa05c,#8a6a30);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:18px;flex-shrink:0;">C</div>
+                            <div>
+                                <h4 style="font-size:15px;font-weight:700;margin:0 0 2px;color:#111;">M. Chakib N*****</h4>
+                                <span style="font-size:12px;color:#999;">Client particulier</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- END CARDS -->
+
+    </div>
+
+    <!-- Stats Bar -->
+    <div style="border-top:1px solid rgba(0,0,0,0.08); padding:38px 0; margin-top:80px;">
+        <div class="container">
+            <div class="row text-center g-0">
+                <div class="col-6 col-md-3" style="padding:8px 16px; border-right:1px solid rgba(0,0,0,0.08);">
+                    <h3 style="font-size:clamp(28px,3vw,42px);font-weight:800;margin:0 0 4px;line-height:1;">15<span style="color:#caa05c;font-size:0.7em;">+</span></h3>
+                    <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;opacity:0.6;">Ans d'expérience</span>
+                </div>
+                <div class="col-6 col-md-3" style="padding:8px 16px; border-right:1px solid rgba(0,0,0,0.08);">
+                    <h3 style="font-size:clamp(28px,3vw,42px);font-weight:800;margin:0 0 4px;line-height:1;">4,377<span style="color:#caa05c;font-size:0.7em;">+</span></h3>
+                    <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;opacity:0.6;">Clients satisfaits</span>
+                </div>
+                <div class="col-6 col-md-3" style="padding:8px 16px; border-right:1px solid rgba(0,0,0,0.08);">
+                    <h3 style="font-size:clamp(28px,3vw,42px);font-weight:800;margin:0 0 4px;line-height:1;">6<span style="color:#caa05c;font-size:0.7em;">+</span></h3>
+                    <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;opacity:0.6;">Points de ventes</span>
+                </div>
+                <div class="col-6 col-md-3" style="padding:8px 16px;">
+                    <h3 style="font-size:clamp(28px,3vw,42px);font-weight:800;margin:0 0 4px;line-height:1;">1,887<span style="color:#caa05c;font-size:0.7em;">+</span></h3>
+                    <span style="font-size:10px;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;opacity:0.6;">Questions répondues</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+<!-- Articles Section -->
+<section class="overflow-hidden fade-wrapper" style="
+    position: relative;
+    padding: 100px 0 120px;
+    background:
+        radial-gradient(ellipse at 30% 0%, rgba(180,110,10,0.15) 0%, transparent 60%),
+        linear-gradient(160deg, #080603 0%, #0d0a04 40%, #100d05 70%, #0a0702 100%);
+">
+    <!-- Bottom amber glow -->
+    <div style="position:absolute;bottom:0;left:0;right:0;height:200px;background:radial-gradient(ellipse at 50% 100%,rgba(190,120,10,0.18) 0%,transparent 70%);pointer-events:none;z-index:0;"></div>
+
+    <div class="container" style="position:relative;z-index:2;">
+
+        <!-- Heading -->
+        <div class="text-center fade-top" style="margin-bottom:60px;">
+            <h4 style="color:#caa05c;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;margin-bottom:14px;">Blog</h4>
+            <h2 style="color:#fff;font-size:clamp(28px,3.5vw,44px);font-weight:700;margin:0;">Articles</h2>
+            <div style="width:50px;height:1px;background:#caa05c;margin:18px auto 0;"></div>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="row g-4 fade-top">
+
+            <!-- Article 1 -->
+            <div class="col-lg-6">
+                <div style="
+                    background:rgba(255,255,255,0.03);
+                    border:1px solid rgba(202,160,92,0.15);
+                    border-radius:8px;
+                    overflow:hidden;
+                    transition:border-color 0.3s ease;
+                    height:100%;
+                    display:flex;
+                    flex-direction:column;
+                " class="article-card">
+                    <!-- Image -->
+                    <div style="overflow:hidden;height:260px;position:relative;">
+                       <img src="./assets/img/images/article.jpg"
+     alt="Appareils de massage"
+     style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.5s ease;"
+     class="article-img">
+                        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,3,0.6) 0%,transparent 60%);"></div>
+                        <span style="position:absolute;top:16px;left:16px;background:#caa05c;color:#080603;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border-radius:2px;">Bien-être</span>
+                    </div>
+
+                    <!-- Content -->
+                    <div style="padding:32px 30px;display:flex;flex-direction:column;flex:1;">
+                        <span style="color:rgba(255,255,255,0.35);font-size:11px;letter-spacing:0.06em;display:block;margin-bottom:14px;">21 DÉC 2020</span>
+                        <h3 style="color:#fff;font-size:clamp(16px,1.8vw,20px);font-weight:700;line-height:1.35;margin-bottom:16px;">
+                            « Les 5 meilleurs appareils de massage pour soulager la douleur et réduire le stress »
+                        </h3>
+                        <p style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.8;margin-bottom:20px;">
+                            Introduction : Le stress et les douleurs musculaires sont des problèmes courants pour beaucoup de gens. Heureusement, il existe des appareils de massage qui peuvent aider...
+                        </p>
+
+                        <!-- Expandable content -->
+                        <div class="article-full-1" style="display:none; color:rgba(255,255,255,0.65);font-size:14px;line-height:1.85;margin-bottom:20px;">
+                            <p>Le stress et les douleurs musculaires sont des problèmes courants. Voici les 5 meilleurs appareils :</p>
+                            <p><strong style="color:#caa05c;">1. Le coussin de massage shiatsu</strong> — Imite les mouvements de pression et de pétrissage des mains d'un masseur. Idéal pour le cou, les épaules et le dos.</p>
+                            <p><strong style="color:#caa05c;">2. Le masseur de pieds</strong> — Utilise des rouleaux et des vibrations pour stimuler les points de pression sur la plante des pieds.</p>
+                            <p><strong style="color:#caa05c;">3. Le pistolet de massage</strong> — Appareil portable utilisant des vibrations. Particulièrement utile pour les sportifs souffrant de douleurs musculaires.</p>
+                            <p><strong style="color:#caa05c;">4. Le tapis de massage</strong> — Tapis équipé de petites bosses stimulant les points de pression dans le corps.</p>
+                            <p><strong style="color:#caa05c;">5. Le rouleau de massage</strong> — Petit cylindre pour masser différentes parties du corps, notamment les jambes et les bras.</p>
+                            <p>Conclusion : Les appareils de massage peuvent être très utiles pour soulager la douleur et réduire le stress. Chacun a ses propres avantages selon vos besoins.</p>
+                        </div>
+
+                        <button onclick="toggleArticle('article-full-1', this)" style="
+                            display:inline-flex;align-items:center;gap:8px;
+                            color:#caa05c;font-size:13px;font-weight:600;
+                            letter-spacing:0.08em;text-transform:uppercase;
+                            background:none;border:none;cursor:pointer;
+                            padding:0;margin-top:auto;
+                            transition:gap 0.3s ease;
+                        ">
+                            LIRE LA SUITE <i class="fa-regular fa-arrow-right" style="font-size:12px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div class="col-lg-6">
+                <div style="
+                    background:rgba(255,255,255,0.03);
+                    border:1px solid rgba(202,160,92,0.15);
+                    border-radius:8px;
+                    overflow:hidden;
+                    transition:border-color 0.3s ease;
+                    height:100%;
+                    display:flex;
+                    flex-direction:column;
+                " class="article-card">
+                    <!-- Image -->
+                    <div style="overflow:hidden;height:260px;position:relative;">
+                        <img src="./assets/img/images/article2.jpg"
+     alt="Fauteuil de massage"
+     style="width:100%;height:100%;object-fit:cover;object-position:center center;transition:transform 0.5s ease;"
+     class="article-img">
+                        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,6,3,0.6) 0%,transparent 60%);"></div>
+                        <span style="position:absolute;top:16px;left:16px;background:#caa05c;color:#080603;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 12px;border-radius:2px;">Guide</span>
+                    </div>
+
+                    <!-- Content -->
+                    <div style="padding:32px 30px;display:flex;flex-direction:column;flex:1;">
+                        <span style="color:rgba(255,255,255,0.35);font-size:11px;letter-spacing:0.06em;display:block;margin-bottom:14px;">14 DÉC 2020</span>
+                        <h3 style="color:#fff;font-size:clamp(16px,1.8vw,20px);font-weight:700;line-height:1.35;margin-bottom:16px;">
+                            Qu'est-ce qu'un fauteuil de massage ?
+                        </h3>
+                        <p style="color:rgba(255,255,255,0.55);font-size:14px;line-height:1.8;margin-bottom:20px;">
+                            Les fauteuils de massage sont de plus en plus populaires dans le monde entier. Ils sont souvent utilisés pour soulager le stress, la tension musculaire...
+                        </p>
+
+                        <!-- Expandable content -->
+                        <div class="article-full-2" style="display:none; color:rgba(255,255,255,0.65);font-size:14px;line-height:1.85;margin-bottom:20px;">
+                            <p><strong style="color:#caa05c;">Qu'est-ce qu'un fauteuil de massage ?</strong><br>Un fauteuil de massage est un siège équipé de mécanismes intégrés — rouleaux, airbags, coussins de vibration — conçus pour simuler les mouvements d'un masseur professionnel.</p>
+                            <p><strong style="color:#caa05c;">Comment fonctionne-t-il ?</strong><br>Les rouleaux se déplacent de haut en bas et de manière circulaire. Les airbags se gonflent et se dégonflent pour fournir une pression sur différentes parties du corps.</p>
+                            <p><strong style="color:#caa05c;">Les avantages :</strong></p>
+                            <ul style="padding-left:16px;margin-bottom:12px;">
+                                <li style="margin-bottom:8px;">Soulagement du stress et de l'anxiété</li>
+                                <li style="margin-bottom:8px;">Amélioration de la circulation sanguine</li>
+                                <li style="margin-bottom:8px;">Réduction de la douleur et de la tension musculaire</li>
+                                <li style="margin-bottom:8px;">Amélioration de la posture</li>
+                                <li style="margin-bottom:8px;">Réduction des migraines et des maux de tête</li>
+                            </ul>
+                            <p>Les fauteuils Luxarius sont disponibles dans une variété de modèles, chacun avec ses propres caractéristiques et fonctions, pour répondre à tous les besoins.</p>
+                        </div>
+
+                        <button onclick="toggleArticle('article-full-2', this)" style="
+                            display:inline-flex;align-items:center;gap:8px;
+                            color:#caa05c;font-size:13px;font-weight:600;
+                            letter-spacing:0.08em;text-transform:uppercase;
+                            background:none;border:none;cursor:pointer;
+                            padding:0;margin-top:auto;
+                            transition:gap 0.3s ease;
+                        ">
+                            LIRE LA SUITE <i class="fa-regular fa-arrow-right" style="font-size:12px;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End Articles Grid -->
+
+        <!-- CTA Button -->
+        <div class="text-center fade-top" style="margin-top:56px;">
+            <a href="https://luxarius.ma/blog/" target="_blank" class="tl-primary-btn" style="
+                display:inline-flex;align-items:center;gap:10px;
+                background:#caa05c;color:#080603;
+                padding:16px 40px;
+                font-size:12px;font-weight:700;
+                letter-spacing:0.12em;text-transform:uppercase;
+                border:none;text-decoration:none;
+                transition:background 0.3s ease;
+            ">
+                VOIR LES ARTICLES <i class="fa-regular fa-arrow-right"></i>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- Styles -->
+    <style>
+        .article-card:hover {
+            border-color: rgba(202,160,92,0.4) !important;
+        }
+        .article-card:hover .article-img {
+            transform: scale(1.05);
+        }
+    </style>
+
+    <!-- Toggle Script -->
+    <script>
+        function toggleArticle(cls, btn) {
+            var content = document.querySelector('.' + cls);
+            var isOpen = content.style.display === 'block';
+            content.style.display = isOpen ? 'none' : 'block';
+            btn.innerHTML = isOpen
+                ? 'LIRE LA SUITE <i class="fa-regular fa-arrow-right" style="font-size:12px;"></i>'
+                : 'RÉDUIRE <i class="fa-regular fa-arrow-up" style="font-size:12px;"></i>';
+        }
+    </script>
+
+</section>
+<!-- End Articles Section -->
+
 
         <section class="sponsor-section sponsor-1 bg-grey pt-120 pb-130 overflow-hidden">
             <div class="container">
@@ -904,318 +1449,94 @@
         </section>
         <!-- ./ sponsor-section -->
 
-        <div class="antra-panoroma-area fade-wrapper">
-            <div class="bg-shape"><img src="assets/img/shapes/panoroma-shape-1.png" alt="shape"></div>
-            <div class="container">
-                <div class="section-heading text-center align-items-center fade-top">
-                    <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">360-degree panoramas</h4>
-                    <h2 class="section-title cursor-effect title-2">Create an even <span>greater <br>experience</span></h2>
-                </div>
-            </div>
-            <div class="antra-panoroma-container container fade-top">
-                <div class="antra-panoroma-img" data-img="assets/img/bg-img/virtual-tours.jpg"></div>
-            </div>
-        </div>
+      
 
-        <section class="team-section bg-grey pt-140 pb-140 tl-bg-color fade-wrapper">
-            <div class="bg-shape"><img src="assets/img/shapes/team-bg-shape-1.png" alt="shape"></div>
-            <div class="container container-2">
-                <div class="row section-heading-wrap fade-top">  
-                    <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="section-heading mb-0">
-                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">amazing design team</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                        <div class="section-heading section-heading-2 mb-0">
-                            <h2 class="section-title cursor-effect title-2">Meet the <span>Experts Our <br> interior</span> designers</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row team-wrap">
-                    <div class="col-lg-4">
-                        <div class="team-img slide-anim" data-delay="0.3" data-offset="100" data-direction="left">
-                            <img src="assets/img/team/team-img-1.png" alt="img">
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="team-item-list slide-anim" data-delay="0.3" data-offset="100" data-direction="left">
-                            <div class="team-item" data-img="assets/img/team/team-img-1.png">
-                                <div class="left-content">
-                                    <span class="number">01</span>
-                                    <h3 class="title"><a href="team-details.html">Mark Jackson</a></h3>
-                                </div>
-                                <div class="mid-content">
-                                    <span>Exhibition designer</span>
-                                </div>
-                                <div class="arrow">
-                                    <a href="team-details.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-item" data-img="assets/img/team/team-img-2.png">
-                                <div class="left-content">
-                                    <span class="number">02</span>
-                                    <h3 class="title"><a href="team-details.html">Valeria Novikova</a></h3>
-                                </div>
-                                <div class="mid-content">
-                                    <span>Exhibition designer</span>
-                                </div>
-                                <div class="arrow">
-                                    <a href="team-details.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-item" data-img="assets/img/team/team-img-3.png">
-                                <div class="left-content">
-                                    <span class="number">03</span>
-                                    <h3 class="title"><a href="team-details.html">Alex Podzemsky</a></h3>
-                                </div>
-                                <div class="mid-content">
-                                    <span>Exhibition designer</span>
-                                </div>
-                                <div class="arrow">
-                                    <a href="team-details.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-item" data-img="assets/img/team/team-img-4.png">
-                                <div class="left-content">
-                                    <span class="number">04</span>
-                                    <h3 class="title"><a href="team-details.html">Helen Reeves</a></h3>
-                                </div>
-                                <div class="mid-content">
-                                    <span>Exhibition designer</span>
-                                </div>
-                                <div class="arrow">
-                                    <a href="team-details.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                            <div class="team-item" data-img="assets/img/team/team-img-5.png">
-                                <div class="left-content">
-                                    <span class="number">05</span>
-                                    <h3 class="title"><a href="team-details.html">Jake Nicholson</a></h3>
-                                </div>
-                                <div class="mid-content">
-                                    <span>Exhibition designer</span>
-                                </div>
-                                <div class="arrow">
-                                    <a href="team-details.html"><i class="fa-solid fa-arrow-right"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ./ team-section -->
 
-        <section class="video-section">
-            <div class="bg-img" data-background="assets/img/bg-img/video-bg-1.png"></div>
-            <div class="container container-2">
-                <div class="video-content">
-                    <div class="play-btn">
-                        <a
-                            class="video-popup venobox"
-                            data-autoplay="true"
-                            data-vbtype="video"
-                            href="https://youtu.be/JwC-Qx1lJso">
-                            <i class="fa-solid fa-play"></i>
-                        </a>
-                    </div>
-                    <h2 class="video-title">Unlock Your Dream <br> Home Today!</h2>
-                    <p>We encourage clients to actively participate in discussions, share their ideas, preferences, and feedback.</p>
-                </div>
-            </div>
-        </section>
-        <!-- ./ video-section -->
 
-        <section class="blog-section pt-150 fade-wrapper tl-bg-color">
-            <div class="container container-2">
-                <div class="row section-heading-wrap fade-top">  
-                    <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="section-heading mb-0">
-                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">amazing design team</h4>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-md-12">
-                        <div class="section-heading section-heading-2 mb-0">
-                            <h2 class="section-title cursor-effect title-2">Meet the <span>Experts Our <br> interior</span> designers</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="blog-carousel swiper fade-top">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="post-card">
-                                <div class="post-thumb">
-                                    <img src="assets/img/blog/post-1.jpg" alt="post">
-                                    <span class="category">exteriors</span>
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="blog-details.html">Four Ways for Creating Extra Space in Small Homes</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="post-card">
-                                <div class="post-thumb">
-                                    <img src="assets/img/blog/post-2.png" alt="post">
-                                    <span class="category">exteriors</span>
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="blog-details.html">Four Ways for Creating Extra Space in Small Homes</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="post-card">
-                                <div class="post-thumb">
-                                    <img src="assets/img/blog/post-3.png" alt="post">
-                                    <span class="category">exteriors</span>
-                                </div>
-                                <div class="post-content">
-                                    <ul class="post-meta">
-                                        <li>Dec 25, 2025</li>
-                                        <li>By <span>Admin</span></li>
-                                    </ul>
-                                    <h3 class="title"><a href="blog-details.html">Four Ways for Creating Extra Space in Small Homes</a></h3>
-                                    <p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- ./ blog-section -->
+       
 
-        <section class="gallary-section overflow-hidden">
-            <div class="gallary-text"><span>gallery</span></div>
-            <div class="gallary-wrap wrap-1">
-                <div class="gallery-scroll-wrap">
-                    <div class="gallary-scroll-item">
-                        <a href="assets/img/project/project-img-6.png" class="venobox" data-gall="gallary1"><img src="assets/img/project/project-img-6.png" alt="img"></a>
-                    </div>
-                    <div class="gallary-scroll-item">
-                        <a href="assets/img/project/project-img-7.png" class="venobox" data-gall="gallary1"><img src="assets/img/project/project-img-7.png" alt="img"></a>
-                    </div>
-                    <div class="gallary-scroll-item">
-                        <a href="assets/img/project/project-img-8.png" class="venobox" data-gall="gallary1"><img src="assets/img/project/project-img-8.png" alt="img"></a>
-                    </div>
-                    <div class="gallary-scroll-item">
-                        <a href="assets/img/project/project-img-9.png" class="venobox" data-gall="gallary1"><img src="assets/img/project/project-img-9.png" alt="img"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="gallary-wrap gallery-scroll-direction-ltr">
-                <div class="gallery-scroll-wrap align-items-start">
-                    <div class="gallary-scroll-item">
-                        <a href="assets/img/project/project-img-10.png" class="venobox" data-gall="gallary1"><img src="assets/img/project/project-img-10.png" alt="img"></a>
-                    </div>
-                    <div class="gallary-scroll-item">
-                        <a href="assets/img/project/project-img-11.png" class="venobox" data-gall="gallary1"><img src="assets/img/project/project-img-11.png" alt="img"></a>
-                    </div>
-                    <div class="gallary-scroll-item">
-                        <a href="assets/img/project/project-img-12.png" class="venobox" data-gall="gallary1"><img src="assets/img/project/project-img-12.png" alt="img"></a>
-                    </div>
-                    <div class="gallary-scroll-item">
-                        <a href="assets/img/project/project-img-13.png" class="venobox" data-gall="gallary1"><img src="assets/img/project/project-img-13.png" alt="img"></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="newsletter-section pb-130 overflow-hidden tl-bg-color fade-wrapper">
-            <div class="bg-shape"><img src="assets/img/shapes/newsletter-shape.png" alt="shape"></div>
-            <div class="container">
-                <div class="newsletter-wrap">
-                    <div class="section-heading text-center fade-top">
-                        <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">Vous avez un projet ?</h4>
-                        <h2 class="section-title cursor-effect">Obtenez <span>votre devis <br> gratuit</span> en 48h</h2>
-                        <p class="fade-top">Laissez-nous votre email pour être recontacté(e) rapidement par un conseiller Luxarius et recevoir une offre adaptée à vos besoins.</p>
-                    </div>
-                    <div class="newsletter-form fade-top">
-                        <input type="text" id="email" name="email" class="form-control" placeholder="Email address..">
-                        <button type="submit"><i class="fa-regular fa-arrow-right-long"></i></button>
-                    </div>
-                </div>
-            </div>
-        </section>
+     
         <!-- ./ newsletter-section -->
 
-        <footer class="footer-section overflow-hidden">
-            <div class="footer-bg" data-background="assets/img/bg-img/footer-bg.png"></div>
-            <div class="footer-shade"></div>
-            <div class="container container-2">
-                <div class="row footer-wrap">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget">
-                            <div class="widget-header">
-                                <div class="footer-logo">
-                                    <a href="index.html"><img src="assets/img/logo/logo-2.png" alt="logo"></a>
-                                </div>
-                            </div>
-                            <p class="mb-10">Fauteuils de massage haut de gamme pour le bien-être au quotidien.</p>
-                            <p class="mb-0">Casablanca, Maroc <br> Livraison & installation partout au Maroc</p>
+       <footer class="footer-section overflow-hidden" style="
+    position: relative;
+    background:
+        radial-gradient(ellipse at 70% 100%, rgba(180,110,10,0.28) 0%, rgba(100,60,5,0.10) 45%, transparent 70%),
+        radial-gradient(ellipse at 20% 50%, rgba(15,10,2,0.95) 0%, transparent 70%),
+        linear-gradient(160deg, #080603 0%, #0d0a04 40%, #100d05 70%, #0a0702 100%);
+">
+    <!-- Top amber accent line -->
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);width:1px;height:60px;background:linear-gradient(to bottom,transparent,#caa05c);z-index:1;"></div>
+    <div style="position:absolute;top:60px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:#caa05c;z-index:1;"></div>
+
+    <!-- Bottom amber glow -->
+    <div style="position:absolute;bottom:0;left:0;right:0;height:200px;background:radial-gradient(ellipse at 50% 100%,rgba(190,120,10,0.20) 0%,transparent 70%);pointer-events:none;z-index:0;"></div>
+
+    <!-- NO footer-bg or footer-shade divs needed -->
+
+    <div class="container container-2" style="position:relative;z-index:2;">
+        <div class="row footer-wrap">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <div class="widget-header">
+                        <div class="footer-logo">
+                            <a href="index.html"><img src="assets/img/logo/Logo-3.png" alt="logo"></a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget footer-col-2">
-                            <ul class="footer-list">
-                                <li><a href="https://luxarius.ma/" target="_blank">Accueil</a></li>
-                                <li><a href="https://luxarius.ma/qui-sommes-nous/" target="_blank">À propos</a></li>
-                                <li><a href="https://luxarius.ma/contact/" target="_blank">Contact</a></li>
-                                <li><a href="https://luxarius.ma/garantie/" target="_blank">Garantie</a></li>
-                                <li><a href="https://luxarius.ma/blog/" target="_blank">Blog</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget footer-col-2 pl-0">
-                            <ul class="footer-list">
-                                <li><a href="https://luxarius.ma/product/president/" target="_blank">PRESIDENT</a></li>
-                                <li><a href="https://luxarius.ma/product/luxor/" target="_blank">LUXOR</a></li>
-                                <li><a href="https://luxarius.ma/product/premium/" target="_blank">PREMIUM+</a></li>
-                                <li><a href="https://luxarius.ma/product/comfort/" target="_blank">COMFORT</a></li>
-                                <li><a href="https://luxarius.ma/product/king/" target="_blank">KING</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="footer-widget">
-                            <div class="footer-address">
-                                <a class="number" href="tel:+212664529010">(+212) 664-529010</a>
-                                <a class="mail" href="mailto:contact@luxarius.ma">contact@luxarius.ma</a>
-                                <ul class="social-list">
-                                    <li><a href="#">Facebook</a></li>
-                                    <li><a href="#">Instagram</a></li>
-                                    <li><a href="#">YouTube</a></li>
-                                    <li><a href="#">Twitter</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                    <p class="mb-10">Fauteuils de massage haut de gamme pour le bien-être au quotidien.</p>
+                    <p class="mb-0">Casablanca, Maroc <br> Livraison & installation partout au Maroc</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget footer-col-2">
+                    <ul class="footer-list">
+                        <li><a href="https://luxarius.ma/" target="_blank">Accueil</a></li>
+                        <li><a href="https://luxarius.ma/qui-sommes-nous/" target="_blank">À propos</a></li>
+                        <li><a href="https://luxarius.ma/contact/" target="_blank">Contact</a></li>
+                        <li><a href="https://luxarius.ma/garantie/" target="_blank">Garantie</a></li>
+                        <li><a href="https://luxarius.ma/blog/" target="_blank">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget footer-col-2 pl-0">
+                    <ul class="footer-list">
+                        <li><a href="https://luxarius.ma/product/president/" target="_blank">PRESIDENT</a></li>
+                        <li><a href="https://luxarius.ma/product/luxor/" target="_blank">LUXOR</a></li>
+                        <li><a href="https://luxarius.ma/product/premium/" target="_blank">PREMIUM+</a></li>
+                        <li><a href="https://luxarius.ma/product/comfort/" target="_blank">COMFORT</a></li>
+                        <li><a href="https://luxarius.ma/product/king/" target="_blank">KING</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-widget">
+                    <div class="footer-address">
+                        <a class="number" href="tel:+212664529010">(+212) 664-529010</a>
+                        <a class="mail" href="mailto:contact@luxarius.ma">contact@luxarius.ma</a>
+                        <ul class="social-list">
+                            <li><a href="#">Facebook</a></li>
+                            <li><a href="#">Instagram</a></li>
+                            <li><a href="#">YouTube</a></li>
+                            <li><a href="#">Twitter</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="copyright-area">
-                <div class="container">
-                    <div class="copyright-content">
-                        <p>© 2025 Luxarius. All Rights Reserved.</p>
-                    </div>
-                </div>
+        </div>
+    </div>
+
+    <div class="copyright-area" style="position:relative;z-index:2;border-top:1px solid rgba(202,160,92,0.15);">
+        <div class="container">
+            <div class="copyright-content">
+                <p>© 2025 Luxarius. All Rights Reserved.</p>
             </div>
-            <div class="footer-text"><span>antra</span></div>
-        </footer>
+        </div>
+    </div>
+
+    <div class="footer-text" style="opacity:0.03;"><span>Luxarius</span></div>
+
+</footer>
         <!-- ./ footer-section -->
 
         </div>

@@ -637,19 +637,23 @@ animateBars();
         // Testi Carousel
        // Testi Carousel
 var swiperTesti = new Swiper(".testi-carousel", {
-    slidesPerView: 1,
+    slidesPerView: 3,
     spaceBetween: 24,
-    slidesPerGroup: 1,
     loop: true,
     autoplay: {
         delay: 4000,
         disableOnInteraction: false,
     },
-    grabcursor: true,
+    grabCursor: true,
     speed: 800,
-    pagination: {
-        el: '.testi-carousel .swiper-pagination',
-        clickable: true,
+    navigation: {
+        nextEl: '.testi-next-btn',
+        prevEl: '.testi-prev-btn',
+    },
+    breakpoints: {
+        320: { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024: { slidesPerView: 3 },
     },
 });
         //Testi Carousel
